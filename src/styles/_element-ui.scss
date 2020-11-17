@@ -1,0 +1,200 @@
+/* Color del tema */
+$--color-primary: $primary;
+
+/* Ubicación de la fuente, obligatoria */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";
+@import '~element-ui/lib/theme-chalk/display.css';
+
+/*
+ * Element UI Fixes
+ */
+.el-input-number {
+    width: 100%;
+}
+
+.el-select {
+   display: block;
+}
+
+.el-drawer {
+   outline: 0;
+}
+
+.el-date-editor.el-input,
+.el-date-editor.el-input__inner {
+   width: 100%;
+}
+
+.el-form--label-top {
+   .el-form-item__label {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 14px;
+   }
+}
+
+.el-form-item__content {
+   small {
+      line-height: 12px !important;
+      font-size: 12px;
+      display: block;
+      margin-bottom: 7px;
+      margin-top: -7px;
+      color: $info;
+
+      a {
+         color: $primary;
+         text-decoration: none;
+
+         &:hover {
+            text-decoration: underline;
+         }
+      }
+   }
+}
+
+.el-radio__label,
+.el-checkbox__label {
+   small {
+      margin-top: 5px;
+      margin-bottom: 0;
+   }
+}
+ 
+.el-form-item {
+   margin-bottom: 10px;
+   
+   .el-form-item__error {
+      position: static;
+      font-size: 12px;
+      line-height: 12px;
+   }
+}
+
+.is-fullscreen {
+   .el-loading-spinner {
+      .path {
+         stroke: $primary;
+      }
+      
+      .el-loading-text {
+         color: $black;
+         text-shadow: 1px 1px 1px transparentize($black, 0.7);
+         font-size: 17px;
+      }
+   }
+}
+
+
+
+.el-textarea textarea {
+   resize: none;
+}
+
+.limit-reached {
+   .el-upload--picture-card {
+      display: none;
+   }
+}
+
+.el-upload:not(.el-upload--picture-card) {
+   width: 100%;
+   margin-bottom: 15px;
+
+   .el-upload-dragger {
+      width: 100%;
+   }
+
+   .el-upload__tip {
+      margin-top: 0;
+      line-height: 12px;
+   }
+}
+
+.el-upload-list--text {
+   margin-top: -17px;
+}
+
+.el-message {
+   white-space: pre-line;
+   min-width: 300px;
+}
+.el-message-box {
+   max-width: calc(100% - 20px);
+}
+
+.el-message-box__title {
+   text-align: center;
+}
+
+.el-main {
+   padding: 10px;
+}
+
+.el-menu-item {
+   padding-left: 10px;
+   color: $white;
+
+   i {
+      color: $white;
+   }
+
+   &:hover,
+   &:hover i,
+   &:focus,
+   &:focus i {
+      background-color: transparent;
+      color: $white;
+   }
+   &.is-active {
+      color: $white;
+      background-color: $primary;
+      //background: linear-gradient(90deg, $primary 0%, transparentize($primary, 0.2) 100%);
+      background: linear-gradient(90deg, rgba(20,13,138,1) 0%, rgba(15,21,181,0.7259278711484594) 74%, rgba(17,70,189,1) 100%);
+      i { color: $white }
+   }
+  
+}
+
+//TODO:cambia el color de la flecha del collapse del sidebar
+.el-submenu__title i {
+   color: white;
+}
+
+.el-alert {
+   &.el-alert--fit {
+      width: auto;
+      display: inline-flex;
+   }
+
+   .el-alert__description {
+      margin: 1px 0 0 0;
+   }
+}
+
+.el-notification__content {
+   text-align: left;
+}
+
+.el-tag {
+   white-space: pre-line;
+   min-height: 28px;
+   height: auto;
+   word-break: break-word;
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+
+   .el-tag__close {
+      margin-right: 5px;
+   }
+}
+
+// TODO: Clase que deja margen derecho a la ultima tab que se abra, sin el margen
+// se tapa el boton de cierre.
+.el-tabs--top.el-tabs--border-card > .el-tabs__header .el-tabs__item:last-child{
+   margin-right: 70px;
+}
+
