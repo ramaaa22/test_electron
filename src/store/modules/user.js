@@ -40,8 +40,6 @@ const actions = {
             api: 'revision'
         });
 
-        commit('SET_TOKEN', data.access_token);
-
         setToken('revision', data.access_token);
 
     },

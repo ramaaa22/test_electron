@@ -21,4 +21,3 @@ tests/**/coverage/
 #Electron-builder output
 /dist_electron
 
-src/views/
