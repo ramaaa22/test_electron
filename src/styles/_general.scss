@@ -1,0 +1,326 @@
+* {
+    box-sizing: border-box;
+    outline: 0 !important;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: Nunito, Arial;
+    //font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+}
+
+//scrollbar
+body::-webkit-scrollbar {
+    width: 12px;               
+  }
+body::-webkit-scrollbar-track {
+    background: white;       
+}
+body::-webkit-scrollbar-thumb {
+    background-color: $primary;    
+    border-radius: 20px;      
+    border: 3px solid white;  
+}
+
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+$h-size:
+    30px,
+    25px,
+    20px,
+    18px,
+    16px,
+    14px
+;
+
+@for $i from 1 through 6 {
+    h#{$i} {
+        margin: 0;
+        font-size: nth($h-size, $i);
+    }
+}
+
+@mixin generate($prefix, $property) {
+    $sizes: 0, 5px, 10px, 15px, 20px, 25px, 30px;
+
+    @for $i from 1 through length($sizes) {
+        $size: nth($sizes, $i);
+
+        .#{$prefix}-#{$i - 1} {
+            #{$property}: $size !important;
+        }
+    }
+}
+
+$fontsizes: 10px, 12px, 15px, 17px, 18px, 20px, 22px, 25px, 30px, 35px;
+
+@for $i from 1 through length($fontsizes) {
+    $fontsize: nth($fontsizes, $i);
+
+    .fs-#{$i} {
+        font-size: $fontsize !important;
+    }
+}
+
+$rules: 
+    ( 'ml', 'margin-left' ),
+    ( 'mt', 'margin-top' ),
+    ( 'mb', 'margin-bottom' ),
+    ( 'mr', 'margin-right' ),
+    ( 'my', 'margin-top' ),
+    ( 'my', 'margin-bottom' ),
+    ( 'mx', 'margin-left' ),
+    ( 'mx', 'margin-right' ),
+    ( 'm', 'margin-top' ),
+    ( 'm', 'margin-bottom' ),
+    ( 'm', 'margin-left' ),
+    ( 'm', 'margin-right' ),
+    ( 'pl', 'padding-left' ),
+    ( 'pt', 'padding-top' ),
+    ( 'pb', 'padding-bottom' ),
+    ( 'pr', 'padding-right' ),
+    ( 'py', 'padding-top' ),
+    ( 'py', 'padding-bottom' ),
+    ( 'px', 'padding-left' ),
+    ( 'px', 'padding-right' ),
+    ( 'p', 'padding-top' ),
+    ( 'p', 'padding-bottom' ),
+    ( 'p', 'padding-left' ),
+    ( 'p', 'padding-right' )
+;
+
+@each $item in $rules {
+    @include generate(nth($item, 1), nth($item, 2));
+}
+
+.montserrat {
+    font-family: Montserrat;
+}
+
+.text-center { 
+    &, * {
+        text-align: center !important; 
+    }
+}
+.text-right { 
+    &, * {
+        text-align: right !important; 
+    }
+}
+.text-left { 
+    &, * {
+        text-align: left !important; 
+    }
+}
+
+.text-underline {
+    &, * {
+        text-decoration: underline;
+    }
+}
+
+.color-primary { color: $primary !important; }
+.color-cool { color: $cool !important; }
+.color-cream { color: $cream !important; }
+.color-success { color: $success !important; }
+.color-warning { color: $warning !important; }
+.color-danger { color: $danger !important; }
+.color-white {color: $white !important;}
+.c-info { color: $info !important; }
+.c-text-primary { color: $text-primary !important; }
+.c-text-regular { color: $text-regular !important; }
+.c-text-secondary { color: $text-secondary !important; }
+.c-text-placeholder { color: $text-placeholder !important; }
+
+.is-flex {
+    display: flex;
+
+    &.is-column {
+        flex-direction: column;
+    }
+
+    &.is-align-center {
+        align-items: center;
+    }
+
+    &.is-align-flex-end {
+        align-items: flex-end;
+    }
+
+    &.is-justify-center {
+        justify-content: center;
+    }
+
+    &.is-justify-flex-end {
+        justify-content: flex-end;
+    }
+
+    &.is-flex-center {
+        justify-content: center;;
+        align-items: center;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.hidden {
+    display: none !important;
+}
+
+strong {
+    font-weight: 600;
+}
+
+.italic { font-style: italic; }
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: $primary;
+        @include linear-gradient($primary, $cool);
+        //background: url('/images/bg.png');
+        background-size: cover;
+        z-index: -2;
+    }
+
+    &:after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: transparentize($black, 0.925);
+        z-index: -1;
+    }
+
+    #header {
+        .el-avatar {
+            box-shadow: 1px 1px 3px 0px transparentize($black, 0.5);
+        }
+    }
+
+    .single-box {
+        margin: 0 auto;
+        max-width: 920px;
+        width: 100%;
+
+        background-color: transparentize($white, 0.05);
+
+        .el-page-header__content {
+            text-transform: uppercase;
+        }
+
+        .el-page-header__left {
+            margin-right: 25px;
+
+            &::after {
+                right: -10px
+            }
+        }
+    }
+
+    .boxed {
+        width: 100%;
+        max-width: 400px;
+        min-width: 300px;
+
+        .el-card {
+            box-shadow: 0 2px 4px transparentize($black, 0.88), 0 0 6px transparentize($black, 0.96);
+            background: transparentize($white, 0.1);
+        }
+    }
+
+    .text-shadow-title {
+        text-shadow: 1px 2px 2px transparentize($black, 0.7);
+    }
+
+    .text-shadow-sub-title {
+        text-shadow: 1px 1px 1px transparentize($black, 0.7);
+    }
+}
+
+//TODO: comentado porque agranda y desacomoda las rows de la tabla de revisiones
+.la, .lar, .las {
+    font-size: 18px;
+    margin-top: 1px;
+}
+
+ #main-menu {
+    .el-drawer {
+        background-image: url('/images/fna-logo-color.png');
+        background-repeat: no-repeat;
+        background-position: 50% calc(100% - 10px);
+        background-size: auto 26px;
+        padding-bottom: 46px;
+
+        .menu-header {
+            position: relative;
+            color: $white;
+            
+            * {
+                position: relative;
+                z-index: 2;
+            }
+
+            .background {
+                position: absolute;
+                top: 0;
+                height: 100%;
+
+                &.left {
+                    z-index: 0;
+                    left: 0;
+                }
+                &.right {
+                    z-index: 0;
+                    right: 0;
+                }
+                &.overlay {
+                    left: 0;
+                    width: 100%;
+                    z-index: 1;
+                    background-color: transparentize($black, 0.5);
+                }
+            }   
+        }
+    }
+}
+
+.invisible {
+    opacity: 0;
+}
