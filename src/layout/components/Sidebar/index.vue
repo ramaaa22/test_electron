@@ -16,12 +16,17 @@
 
 				<div class="info-user-sidebar non-selectable">
 				
+<<<<<<< HEAD
 					<!-- <strong>
+=======
+					<strong>
+>>>>>>> 314cef19bd9acb71b65a2b8d84dddd580f6339a4
 						Email
 					</strong>
 					<br>
 					<span class="ml-5">
 						{{user.email}}
+<<<<<<< HEAD
 					</span> -->
 					<el-tooltip 
                     	content="Editar"
@@ -54,6 +59,12 @@
 				</div>
 				
 				<!-- <div class="mt-4 info-user-sidebar non-selectable">
+=======
+					</span>
+				</div>
+				
+				<div class="mt-4 info-user-sidebar non-selectable">
+>>>>>>> 314cef19bd9acb71b65a2b8d84dddd580f6339a4
 					
 					<strong>
 						Documento
@@ -62,7 +73,11 @@
 					<span class="ml-5">
 						{{user.idnumber}}
 					</span>
+<<<<<<< HEAD
 				</div> -->
+=======
+				</div>
+>>>>>>> 314cef19bd9acb71b65a2b8d84dddd580f6339a4
 				
   			</el-collapse-item>
 		</el-collapse>
@@ -198,12 +213,16 @@ export default {
 		async logout() {
             await this.$store.dispatch("user/logout");
             this.$router.push(`/login`);
+<<<<<<< HEAD
 		},
 		
 		test(){
 			//this.$message('Se ha hecho clic aqui');
 			this.$router.push(`/profile`)
 		}
+=======
+        },
+>>>>>>> 314cef19bd9acb71b65a2b8d84dddd580f6339a4
 	},
 	  
 	components: { SidebarItem, Logo, userContainer},
@@ -215,12 +234,16 @@ export default {
 @import "~@/styles/_functions.scss";
 
 .info-user-sidebar{
+<<<<<<< HEAD
 	//border-left: 5px solid #0B71B8;
 	//border-right: 5px solid #0B71B8;
 	align-content: center;
 	display: flex;
   	align-items: center;
   	justify-content: center;
+=======
+	border-left: 5px solid #0B71B8;
+>>>>>>> 314cef19bd9acb71b65a2b8d84dddd580f6339a4
 	
 }
 

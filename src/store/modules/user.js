@@ -40,8 +40,11 @@ const actions = {
             api: 'revision'
         });
 
+<<<<<<< HEAD
         commit('SET_TOKEN', data.access_token);
 
+=======
+>>>>>>> 314cef19bd9acb71b65a2b8d84dddd580f6339a4
         setToken('revision', data.access_token);
 
     },

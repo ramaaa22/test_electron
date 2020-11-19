@@ -18,6 +18,7 @@ body {
 }
 
 //scrollbar
+<<<<<<< HEAD
 body::-webkit-scrollbar {
     width: 12px;               
   }
@@ -25,6 +26,16 @@ body::-webkit-scrollbar-track {
     background: white;       
 }
 body::-webkit-scrollbar-thumb {
+=======
+
+::-webkit-scrollbar {
+    width: 12px;               
+  }
+::-webkit-scrollbar-track {
+    background: white;       
+}
+::-webkit-scrollbar-thumb {
+>>>>>>> 314cef19bd9acb71b65a2b8d84dddd580f6339a4
     background-color: $primary;    
     border-radius: 20px;      
     border: 3px solid white;  

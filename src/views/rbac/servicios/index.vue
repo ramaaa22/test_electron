@@ -12,23 +12,25 @@
                 </el-button>
             </el-tooltip>
         </div>
-
-        <el-table
-            border
-            fit
-            size="mini"
-            :data="services"
-            :stripe="true"
-            @row-click="chooseRow"
-            cell-class-name="pointer">
-            <el-table-column
-                align="center"
-                label="Nombre"
-                prop="name">
-            </el-table-column>
-        
-        </el-table>
-
+        <el-row type="flex" justify="center">
+            <el-col :span="16">
+                <el-table
+                    stripe
+                    border
+                    fit
+                    size="mini"
+                    :data="services"
+                    @row-click="chooseRow"
+                    cell-class-name="pointer">
+                    <el-table-column
+                        align="center"
+                        label="Nombre"
+                        prop="name">
+                    </el-table-column>
+                
+                </el-table>
+            </el-col>
+        </el-row>
         <el-dialog
             width="30%"
             top="5vh"

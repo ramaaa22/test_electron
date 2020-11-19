@@ -97,6 +97,7 @@ export const routes = [
 	},
 
 	{
+<<<<<<< HEAD
 		path: '/profile',
 		name: 'profile',
 		component: Layout,
@@ -119,6 +120,8 @@ export const routes = [
 	
 
 	{
+=======
+>>>>>>> 314cef19bd9acb71b65a2b8d84dddd580f6339a4
 		path: '/404',
 		name: '404',
 		component: () => import('@/views/404'),
