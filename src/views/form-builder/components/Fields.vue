@@ -82,7 +82,7 @@ export default {
                     dependants_labels.push(dependant.label);
 
                 return this.$message({
-                    offset: 80,
+                    offset: 40,
                     showClose: true,
                     type: 'warning',
                     message: `El campo no puede ser eliminado debido a que ${dependants_labels.join(', ')} ${dependants_labels.length > 1 ? 'dependen' : 'depende'} de él`,
@@ -98,7 +98,7 @@ export default {
                         dependants_titles.push(dependant.title);
 
                     return this.$message({
-                        offset: 80,
+                        offset: 40,
                         showClose: true,
                         type: 'warning',
                         message: `El campo no puede ser eliminado debido a que ${dependants_titles.join(', ')} ${dependants_titles.length > 1 ? 'dependen' : 'depende'} de él`,

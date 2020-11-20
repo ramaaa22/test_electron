@@ -165,7 +165,7 @@ export default {
                 this.new_dependency.visible = true;
             else
                 this.$message({
-                    offset: 80,
+                    offset: 40,
                     showClose: true,
                     message: 'Para agregar una dependencia al campo asegúrese de que tenga definida una etiqueta y que existan campos de selección (o selección múltiple) con una etiqueta definida y opciones declaradas',
                     duration: 5000

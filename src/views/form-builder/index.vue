@@ -375,7 +375,7 @@ export default {
                         dependants_titles.push(dependant.title);
 
                     return this.$message({
-                        offset: 80,
+                        offset: 40,
                         showClose: true,
                         type: 'warning',
                         message: `El paso no puede ser eliminado debido a que ${dependants_titles.join(', ')} ${dependants_titles.length > 1 ? 'dependen' : 'depende'} de él`,
@@ -457,7 +457,7 @@ export default {
                 this.new_dependency.visible = true;
             else
                 this.$message({
-                    offset: 80,
+                    offset: 40,
                     showClose: true,
                     message: 'Para agregar una dependencia al paso, asegúrese de que el paso tenga definido un título y que existan pasos anteriores con título definido y campos de selección (o selección múltiple) con una etiqueta definida y opciones declaradas',
                     duration: 5000
@@ -535,7 +535,7 @@ export default {
                 // Chequeo que tenga nombre
                 if (!step.name || !step.title)
                     return this.$message({
-                        offset: 80,
+                        offset: 40,
                         showClose: true,
                         type: 'warning',
                         message: 'Hay pasos sin nombre o título. Por favor soluciónelo e intente nuevamente',
@@ -544,7 +544,7 @@ export default {
                 // Chequeo que no exista
                 else if (steps[step.name])
                     return this.$message({
-                        offset: 80,
+                        offset: 40,
                         showClose: true,
                         type: 'warning',
                         message: `El paso ${step.title} se encuentra repetido bajo el nombre único ${step.name}. Por favor soluciónelo e intente nuevamente`,
@@ -561,7 +561,7 @@ export default {
                     const is_text = current_field.type === 'text';
                     if (!is_text && !current_field.name)
                         return this.$message({
-                            offset: 80,
+                            offset: 40,
                             showClose: true,
                             type: 'warning',
                             message: `Hay campos sin nombre en el paso ${step.title}. Por favor soluciónelo e intente nuevamente`,
@@ -570,7 +570,7 @@ export default {
                     // Chequeo que no este repetido
                     if (!is_text && fields[current_field.name])
                         return this.$message({
-                            offset: 80,
+                            offset: 40,
                             showClose: true,
                             type: 'warning',
                             message: `El campo ${current_field.label} en el paso ${step.title} se encuentra repetido bajo el nombre único ${current_field.name}. Por favor soluciónelo e intente nuevamente`,
@@ -611,7 +611,7 @@ export default {
 
                                 if (satinized_value === '')
                                     return this.$message({
-                                        offset: 80,
+                                        offset: 40,
                                         showClose: true,
                                         type: 'warning',
                                         message: `El campo ${field.label} en el paso ${step.title} contiene opciones vacías. Por favor soluciónelo e intente nuevamente`,
@@ -619,7 +619,7 @@ export default {
                                     });
                                 else if (rules.in.indexOf(option.value) > -1)
                                     return this.$message({
-                                        offset: 80,
+                                        offset: 40,
                                         showClose: true,
                                         type: 'warning',
                                         message: `El campo ${field.label} en el paso ${step.title} contiene opciones repetidas. Por favor soluciónelo e intente nuevamente`,
@@ -653,7 +653,7 @@ export default {
 
                                 if (!field_name)
                                     return this.$message({
-                                        offset: 80,
+                                        offset: 40,
                                         showClose: true,
                                         type: 'warning',
                                         message: `El campo ${field.label} en el paso ${step.title} tiene dependencias no válidas. Recuerde que un campo anterior no puede depender de un campo posterior. Por favor soluciónelo e intente nuevamente`,
@@ -682,7 +682,7 @@ export default {
 
                         if (!step_field_name)
                             return this.$message({
-                                offset: 80,
+                                offset: 40,
                                 showClose: true,
                                 type: 'warning',
                                 message: `El paso ${step.title} tiene dependencias no válidas. Por favor soluciónelo e intente nuevamente`,
@@ -704,7 +704,7 @@ export default {
             // Chequear que el último paso no tenga dependencias
             if (previous && steps[previous].depends)
                 return this.$message({
-                    offset: 80,
+                    offset: 40,
                     showClose: true,
                     type: 'warning',
                     message: `El paso ${steps[previous].title} no puede tener dependencias por tratarse del último paso. Por favor soluciónelo e intente nuevamente`,
@@ -895,7 +895,7 @@ export default {
             }
             catch(error) {
                 return this.$message({
-                    offset: 80,
+                    offset: 40,
                     showClose: true,
                     type: 'warning',
                     message: `El formulario ingresado tiene un formato no válido`,

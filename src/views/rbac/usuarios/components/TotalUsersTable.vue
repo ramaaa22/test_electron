@@ -180,7 +180,7 @@ export default {
                 });
 
                 this.$message({
-                    offset: 80,
+                    offset: 40,
                     showClose: true,
                     message: "Usuario añadido",
                     type: "success",
@@ -200,7 +200,7 @@ export default {
                         
                         setTimeout(() => {
                             this.$message({
-                                offset: 80,
+                                offset: 40,
                                 showClose: true,
                                 message: menssage_error,
                                 type: "error",

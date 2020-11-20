@@ -182,7 +182,7 @@
                         oauth: true,
                         });
                     this.$message({
-                        offset: 80,
+                        offset: 40,
                         showClose: true,
                         message: "Servicio añadido",
                         type: "success",
@@ -195,7 +195,7 @@
                     if (response.status === 422) {
                         const menssage_error = response.data.error.message.name[0];
                         this.$message({
-                            offset: 80,
+                            offset: 40,
                             showClose: true,
                             message: menssage_error,
                             type: "error",
@@ -243,7 +243,7 @@
                     this.retrieveServices();
                      
                     this.$message({
-                        offset: 80,
+                        offset: 40,
                         showClose: true,
                         message: "Servicio editado",
                         type: "success",
