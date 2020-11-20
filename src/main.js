@@ -68,6 +68,8 @@ Vue.mixin({
             const its_an_object_message = typeof message === 'object';
 
             let message_params = {
+                offset: 80,
+                offset: 80,
                 showClose: true,
                 message,
                 type: 'error'

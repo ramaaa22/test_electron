@@ -58,6 +58,7 @@ const actions = {
             await this.$store.dispatch('user/resetToken');
             
             this.$message({
+                offset: 80,
                 showClose: true,
                 duration: 5000,
                 message: 'La credenciales expiraron. Por favor ingrese nuevamente.',

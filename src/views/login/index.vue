@@ -91,6 +91,8 @@ export default {
 
                 if (response.status === 401)
                     this.$message({
+                        offset: 80,
+                        offset: 80,
                         showClose: true,
                         duration: 5000,
                         message: 'El documento y la contraseña ingresada no coinciden con ningún usuario',
@@ -98,6 +100,8 @@ export default {
                     });
                 else if (response.status === 412)
                     this.$message({
+                        offset: 80,
+                        offset: 80,
                         showClose: true,
                         message: 'Antes de ingresar debe verificar su casilla de correo. Por favor revise el correo no deseado, es posible que el código de verificación haya llegado ahí. Si aún no le llegó ningún mensaje a su casilla de correo, puede reenviar el código de vericación haciendo click en "Reenviar código de verificación" ubicado al final del formulario de ingreso',
                         duration: 0,

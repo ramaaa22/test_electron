@@ -17,13 +17,9 @@ const port = process.env.port || process.env.npm_config_port || 9527 // dev port
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
-  pluginOptions: {
+   pluginOptions: {
     electronBuilder: {
-      preload: 'src/preload.js',
-      builderOptions: {
-        win: {
-          icon: 'public/images/fna.ico'
-        }
+      preload: 'src/preload.js' 
     }
   },
   /**
