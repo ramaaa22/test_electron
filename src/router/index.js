@@ -111,7 +111,7 @@ export const routes = [
 				name: 'profile',
 				component: () => import('@/views/profile/index'),
 				meta:{
-					title: 'Perfil de Usuario'
+					title: 'Perfil de Usuario',
 				}
 			}
 		]
