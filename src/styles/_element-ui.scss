@@ -151,8 +151,8 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
    &.is-active {
       color: $white;
       background-color: $primary;
-      //background: linear-gradient(90deg, $primary 0%, transparentize($primary, 0.2) 100%);
-      background: linear-gradient(90deg, rgba(20,13,138,1) 0%, rgba(15,21,181,0.7259278711484594) 74%, rgba(17,70,189,1) 100%);
+      background: linear-gradient(90deg, $primary 0%, darken($primary, 0.2) 100%);
+      //background: linear-gradient(90deg, rgba(20,13,138,1) 0%, rgba(15,21,181,0.7259278711484594) 74%, rgba(17,70,189,1) 100%);
       i { color: $white }
    }
   

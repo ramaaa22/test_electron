@@ -97,13 +97,12 @@ export const routes = [
 	},
 
 	{
-<<<<<<< HEAD
 		path: '/profile',
 		name: 'profile',
 		component: Layout,
 		hidden: true,
 		meta: {
-			require_not_auth: false,
+			require_auth: true,
 			title:'Perfil'
 		},
 		children:[
@@ -112,7 +111,7 @@ export const routes = [
 				name: 'profile',
 				component: () => import('@/views/profile/index'),
 				meta:{
-					title: 'Perfil de Usuario'
+					title: 'Perfil de Usuario',
 				}
 			}
 		]
@@ -120,8 +119,6 @@ export const routes = [
 	
 
 	{
-=======
->>>>>>> 314cef19bd9acb71b65a2b8d84dddd580f6339a4
 		path: '/404',
 		name: '404',
 		component: () => import('@/views/404'),
