@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="text-right mb-2 pt-2 pr-5 actions">
-
+        <div class="text-right">
+           
             <el-tooltip
                 effect="dark"
                 content="Agregar usuario"
@@ -15,6 +15,7 @@
                     circle>
                 </el-button>
             </el-tooltip>
+            
 
             <el-tooltip
                 effect="dark"
@@ -31,18 +32,18 @@
             </el-tooltip>
         </div>
 
-        
-        <div>
-            <el-input
-                clearable
-                prefix-icon="las la-search"
-                v-model="search"
-                size="mini"
-                placeholder="Documento">
-                    <template slot="prepend">Buscar por documento</template>
-            </el-input>
-        </div>
-
+        <el-row type="flex" justify="end">
+            <el-col class="mb-4 mt-2" :span="6">
+                <el-input
+                    clearable
+                    prefix-icon="las la-search"
+                    v-model="search"
+                    size="mini"
+                    placeholder="Buscar por documento">
+                    
+                </el-input>
+            </el-col>
+        </el-row>
 
         <el-table
             border
@@ -194,6 +195,7 @@ export default {
             } 
             catch (error) {
                 const { response } = error;
+
                 if (response.status === 422) {
                     for (let messages in response.data.error.message) {
                         let menssage_error = response.data.error.message[`${messages}`][0];
@@ -224,6 +226,7 @@ export default {
 </script>
 
 <style scoped>
+
     .el-form-item {
         margin-bottom: 15px;
     }
