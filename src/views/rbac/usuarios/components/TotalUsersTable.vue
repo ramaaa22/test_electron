@@ -40,7 +40,6 @@
                     v-model="search"
                     size="mini"
                     placeholder="Buscar por documento">
-                    
                 </el-input>
             </el-col>
         </el-row>

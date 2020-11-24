@@ -24,6 +24,8 @@
     "custom-electron-titlebar": "^3.2.5",
     "downloadjs": "^1.4.7",
     "echarts": "^4.8.0",
+    "electron-log": "^4.3.0",
+    "electron-updater": "^4.3.5",
     "element-ui": "2.13.2",
     "file-saver": "^2.0.2",
     "js-cookie": "2.2.0",

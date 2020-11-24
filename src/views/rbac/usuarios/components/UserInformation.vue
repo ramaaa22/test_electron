@@ -67,10 +67,6 @@
             <el-divider></el-divider>
         </div>
 
-        
-
-        
-
 
         <div>
             <h6>Nombre</h6>
