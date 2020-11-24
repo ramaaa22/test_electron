@@ -1,73 +1,9 @@
 <template>
 	<div :class="{'has-logo':showLogo}">
 		<logo v-if="showLogo" :collapse="isCollapse" />	
-		
-		<el-collapse class="in" accordion v-model="user_collapse">
-			<el-collapse-item :disabled="isCollapse" name="1">
-				<template slot="title">
-					<i class="las la-user-circle ml-4"></i>
-      				<span v-show="!isCollapse">
-						  {{user.firstname + ' ' + user.lastname}}
-					</span>
-					<i 	v-show="!isCollapse" 
-						class="header-icon el-icon-information">
-					</i>
-    			</template>
 
-				<div class="info-user-sidebar non-selectable">
-				
-					<!-- <strong>
-						Email
-					</strong>
-					<br>
-					<span class="ml-5">
-						{{user.email}}
-					</span> -->
-					<el-tooltip 
-                    	content="Editar"
-                    	placement="top">
-                    	<el-button
-                        	type="primary"
-                        	plain
-                        	circle
-                        	size="mini"
-							@click.native="test"
-                    	>
-                        	<i class="las la-edit"></i>
-                    	</el-button>
-                	</el-tooltip>
-
-					<el-tooltip 
-                    	content="Cerrar Sesión"
-                    	placement="top">
-                    	<el-button
-                        	type="primary"
-                        	plain
-                        	circle
-                        	size="mini"
-							@click.native="logout"
-                    	>
-                        	<i class="las la-sign-out-alt"></i>
-                    	</el-button>
-                	</el-tooltip>
-
-				</div>
-				
-				<!-- <div class="mt-4 info-user-sidebar non-selectable">
-					
-					<strong>
-						Documento
-					</strong>
-					<br>
-					<span class="ml-5">
-						{{user.idnumber}}
-					</span>
-				</div> -->
-				
-  			</el-collapse-item>
-		</el-collapse>
-		
 		<el-scrollbar>
+		
 
 			<el-menu
 				v-if="user"
@@ -75,7 +11,29 @@
 				:collapse="isCollapse"
 				:collapse-transition="false"
 				mode="vertical">
-				
+			
+					<el-submenu index="1">
+						<template slot="title">
+							<i class="las la-user-circle"></i>
+							<span slot="title">
+								{{this.user.firstname + ' ' + this.user.lastname}}
+							</span>
+						</template>
+
+						<app-link :to="'/profile-user'">
+							<el-menu-item index="1-1">
+								Perfil
+							</el-menu-item>
+						</app-link>
+						
+						<el-menu-item 
+							@click="logout" 
+							index="1-2">
+							Salir
+							<i class="las la-sign-out-alt"></i>
+						</el-menu-item>
+					</el-submenu>
+
 					<sidebar-item  
 						v-for="route in routes" 
 						:key="route.path" 
@@ -97,10 +55,12 @@ import { mapGetters } from 'vuex';
 import Logo from './Logo';
 import SidebarItem from './SidebarItem';
 import variables from '@/styles/_variables.scss';
-import userContainer from './userContainer';
+import AppLink from "./Link";
+
 
 export default {
 	data: ()=>({
+		user_edit_route: [],
 		accesses: [],
 		user_collapse: null
 	}),
@@ -206,7 +166,7 @@ export default {
 		}
 	},
 	  
-	components: { SidebarItem, Logo, userContainer},
+	components: { SidebarItem, Logo, AppLink},
 }
 </script>
 

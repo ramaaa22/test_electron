@@ -41,6 +41,7 @@
                     :item="child"
                     :base-path="resolvePath(child.path)"
                     class="nest-menu"/>
+                
         </el-submenu>
     </div>
 </template>
@@ -51,7 +52,7 @@ import { isExternal } from "@/utils/validate";
 import Item from "./Item";
 import AppLink from "./Link";
 import FixiOSBug from "./FixiOSBug";
-import userContainer from './userContainer';
+
 
 export default {
     data() {

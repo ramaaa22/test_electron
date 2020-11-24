@@ -103,17 +103,17 @@ export const routes = [
 		hidden: true,
 		meta: {
 			require_auth: true,
-			title:'Perfil'
+			title: 'Perfil'
 		},
 		children:[
 			{
-				path:'/profile',
-				name: 'profile',
+				path:'/profile-user',
+				name: 'profile-user',
 				component: () => import('@/views/profile/index'),
 				meta:{
 					title: 'Perfil de Usuario',
 				}
-			}
+			},
 		]
 	},
 	
