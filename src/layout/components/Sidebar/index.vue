@@ -25,7 +25,7 @@
 								Perfil
 							</el-menu-item>
 						</app-link>
-						
+
 						<el-menu-item 
 							@click="logout" 
 							index="1-2">
@@ -60,9 +60,7 @@ import AppLink from "./Link";
 
 export default {
 	data: ()=>({
-		user_edit_route: [],
 		accesses: [],
-		user_collapse: null
 	}),
 
 	computed: {
@@ -139,14 +137,6 @@ export default {
 		
 	},
 
-	watch: {
-		isCollapse: function (val) {
-			if(val === true){
-				this.user_collapse = null
-			}
-    	},
-
-	},
 
   	methods: {
 		changeCollapse(){
@@ -157,13 +147,8 @@ export default {
 
 		async logout() {
             await this.$store.dispatch("user/logout");
-            this.$router.push(`/login`);
+
 		},
-		
-		test(){
-			//this.$message('Se ha hecho clic aqui');
-			this.$router.push(`/profile`)
-		}
 	},
 	  
 	components: { SidebarItem, Logo, AppLink},
