@@ -67,6 +67,23 @@ export const routes = [
 	},
 
 	{
+		path: '/tasks',
+		component: Layout,
+		children: [
+			{
+				path: '/tasks',
+				name: 'tasks',
+				component: () => import('@/views/tareas/index'),
+				meta: { 
+					title: 'Tareas', 
+					icon: 'las la-sticky-note',
+					require_auth: true
+				}
+			}
+		]
+	},
+
+	{
 		path: '/rbac',
 		name: 'rbac',
 		component: Layout,
