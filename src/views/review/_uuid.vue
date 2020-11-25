@@ -44,11 +44,11 @@
 </template>
 <script>
 import app from '@/store/modules/app'
-import ApplicationsTable from '@/views/revision/components/ApplicationsTable'
-import ApplicationRender from '@/views/revision/components/ApplicationRender'
-import EvaluationTable from '@/views/revision/components/EvaluationTable'
-import TasksTable from '@/views/revision/components/TasksTable'
-//import Download from '@/views/tareas/components/Download'
+import ApplicationsTable from '@/views/review/components/ApplicationsTable'
+import ApplicationRender from '@/views/review/components/ApplicationRender'
+import EvaluationTable from '@/views/review/components/EvaluationTable'
+import TasksTable from '@/views/review/components/TasksTable'
+//import Download from '@/views/tasks/components/Download'
 import axios from '@/utils/request';
 
 export default {

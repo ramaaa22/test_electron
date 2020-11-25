@@ -45,7 +45,7 @@ export const routes = [
 			{
 				path: '/convocatorias',
 				name: 'revision.announcements.list',
-				component: () => import('@/views/revision/index'),
+				component: () => import('@/views/review/index'),
 				meta: { 
 					require_auth: true,
 					title: 'Revision',
@@ -56,7 +56,7 @@ export const routes = [
 				path: '/convocatorias/:uuid', 
 				name: 'revision.announcements.single',
 				hidden:true,
-				component: () => import('@/views/revision/_uuid'),
+				component: () => import('@/views/review/_uuid'),
 				meta: {
 					require_auth: true,
 					title: null 
@@ -73,7 +73,7 @@ export const routes = [
 			{
 				path: '/tasks',
 				name: 'tasks',
-				component: () => import('@/views/tareas/index'),
+				component: () => import('@/views/tasks/index'),
 				meta: { 
 					title: 'Tareas', 
 					icon: 'las la-sticky-note',
@@ -84,7 +84,7 @@ export const routes = [
 				path: '/task/:id', 
 				name: 'task-id',
 				hidden:true,
-				component: () => import('@/views/tareas/_id'),
+				component: () => import('@/views/tasks/_id'),
 				meta: {title: null, require_auth: true}
             }
 

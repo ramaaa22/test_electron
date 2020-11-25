@@ -543,7 +543,7 @@
 
 <script>
 import axios from '@/utils/request';
-import AssignComponent from '@/views/revision/components/AssignComponent';
+import AssignComponent from '@/views/review/components/AssignComponent';
 import moment from 'moment';
 
 export default {

@@ -61,8 +61,8 @@
 
 <script>
 import app from '@/store/modules/app'
-import ApplicationRender from '@/views/tareas/components/ApplicationRender'
-import Download from '@/views/tareas/components/Download'
+import ApplicationRender from '@/views/tasks/components/ApplicationRender'
+import Download from '@/views/tasks/components/Download'
 import axios from "@/utils/request";
 
 

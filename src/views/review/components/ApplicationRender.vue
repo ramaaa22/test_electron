@@ -1,28 +1,28 @@
 <template>
 <div>
 
-    <el-row type="flex" justify="end">
-    <el-col class="mr-2" :span="2">
+     <div class="component-application ml-6 mt-3">
         <el-tooltip placement="top-start" content="Descargar en PDF">
             <el-button 
                 icon="el-icon-download" 
                 plain 
-                circle 
+                circle
+                size="small"
                 type="success" 
                 @click="downloadPdf">
             </el-button>
         </el-tooltip>
-    </el-col>
-    </el-row>
+    </div>
 
     <el-collapse 
-        id="component-application"
+        class="component-application"
         @change="$setHeights"
         v-model="active" 
+        v-loading="loading"
         accordion>
         <slot name="top"></slot>
         <el-collapse-item 
-            v-for="step in application"
+            v-for="step in steps"
             :key="`step-${step.name}`"
             :name="step.name">
             <template slot="title">
@@ -54,7 +54,7 @@
                                 type="info"
                                 :closable="false"
                                 show-icon>
-                                Puede visualizar el archivo PDF haciendo <a :href="file.url" class="link" target="_blank">click aquí</a>. Tené en cuenta que el link estará disponible durante solo 5 minutos por cuestiones de seguridad. Si refrescas la pantalla (<a href="#" class="link" @click.prevent="$refresh()"><i>refrescar ahora</i></a>) podrás regenerar el link durante otros 5 minutos más
+                                Puede visualizar el archivo PDF haciendo <a :href="file.url" class="link" target="_blank">click aquí</a>. Tené en cuenta que el link estará disponible durante solo 5 minutos por cuestiones de seguridad. Si refrescas la pantalla podrás regenerar el link durante otros 5 minutos más
                             </el-alert>
                             <pdf-viewer
                                 v-if="file.mime.indexOf('pdf') > -1"
@@ -99,20 +99,26 @@
             </div>
         </el-collapse-item>
     </el-collapse>
+
 </div>
 </template>
 
 <script>
-import PdfViewer from '@/views/tareas/components/PdfViewer';
+import PdfViewer from '@/views/review/components/PdfViewer';
+import moment from 'moment';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
 
 export default {
     props: {
-        application: Array,
-        title: String,
-        name: String
+        steps: Array,
+        loading: {
+            type: Boolean,
+            default: false
+        },
+        name: String,
+        idnumber: String
     },
 
     data: () => ({
@@ -132,23 +138,25 @@ export default {
     methods: {
         renderValue(field) {
             if (field.type === 'date') {
-                const date = this.$moment(field.value);
+                const date = moment(field.value);
 
                 return date.format('DD/MM/YYYY');
             }
 
             return field.value;
         },
-         $setHeights() {
+
+        $setHeights(){
             window.dispatchEvent(new Event('resize'));
         },
-        downloadPdf() {
+
+         downloadPdf() {
             const doc = new jsPDF('p', 'pt', 'A4');
             const pageWidth = doc.internal.pageSize.getWidth() / 2 ;
          
-            doc.text(`${this.name}`, pageWidth, 80,  {align: "center"});
-            let large_name = doc.splitTextToSize(this.title, 250)
-            doc.text(large_name, pageWidth, 100, {align: "center"});
+            
+            let large_name = doc.splitTextToSize(this.name, 250)
+            doc.text(large_name, pageWidth, 80, {align: "center"});
           
 
 
@@ -156,7 +164,7 @@ export default {
             
             doc.addImage(img, 'PNG', pageWidth - 75, 30, 160, 30,);
 
-            this.application.map(step => {
+            this.steps.map(step => {
                 let body = [];
 
                 for(let field in step.values) {
@@ -176,8 +184,9 @@ export default {
             });
            
 
-            doc.save(`${this.title + '-' + this.name}.pdf`);
+            doc.save(`inscripción-de-${this.idnumber}.pdf`);
         }
+
     },
 
     components: {
@@ -187,10 +196,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/styles/_variables';
 
-#component-application {
+.component-application {
     border-top: 0;
-    margin-left: 5%;
 
     .pdf-viewer,
     .el-alert,
@@ -201,7 +210,12 @@ export default {
     }
 
     .link {
-        color:red
+        color: $text-secondary;
+    }
+    
+    a,
+    a * {
+        font-size: 12px;
     }
 
     .el-collapse-item__header {
