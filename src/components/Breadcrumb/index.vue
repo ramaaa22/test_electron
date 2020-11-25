@@ -48,6 +48,7 @@ export default {
             let parent = this.$route.matched[1].parent;
             let name = this.$route.matched[1].path;
             
+            console.log(this.$route)
             
             if(title_route === null){
                 title = title_in_param;
@@ -63,6 +64,11 @@ export default {
             }else if( name === '/convocatorias/:uuid'){
                  matched.push(
                     {meta:{ title: 'Revision' }, path: '/convocatorias'}, 
+                    { meta:{ title: title }, path: path_route}
+                )
+            }else if( name === '/task/:id'){
+                 matched.push(
+                    {meta:{ title: 'Tareas' }, path: '/tasks'}, 
                     { meta:{ title: title }, path: path_route}
                 )
             }

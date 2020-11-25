@@ -55,7 +55,8 @@ export default {
 		try {
 
 			const res  = await axios.get("/clients/tasks", {
-                api: "api",
+				api: "revision",
+				oauth: true
 			});
 			
 			this.list = res.data.resources	

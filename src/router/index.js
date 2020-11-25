@@ -79,7 +79,15 @@ export const routes = [
 					icon: 'las la-sticky-note',
 					require_auth: true
 				}
-			}
+			},
+			{
+				path: '/task/:id', 
+				name: 'task-id',
+				hidden:true,
+				component: () => import('@/views/tareas/_id'),
+				meta: {title: null, require_auth: true}
+            }
+
 		]
 	},
 

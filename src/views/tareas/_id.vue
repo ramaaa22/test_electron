@@ -1,11 +1,11 @@
 <template >
-<div class="app-container">
+<el-main>
 
     <el-row type="flex" justify="center">
         <el-col :span="16">
 
             <el-row>
-                <el-col>
+                <el-col class="is-flex is-justify-flex-end">
                     <download :list="complete_list"/>
                 </el-col>   
             </el-row> 
@@ -56,13 +56,13 @@
                 :application="application"/>   
     </el-drawer>
 
-</div>
+</el-main>
 </template>
 
 <script>
 import app from '@/store/modules/app'
-import ApplicationRender from '@/views/table/components/ApplicationRender'
-import Download from '@/views/table/components/Download'
+import ApplicationRender from '@/views/tareas/components/ApplicationRender'
+import Download from '@/views/tareas/components/Download'
 import axios from "@/utils/request";
 
 
@@ -91,7 +91,8 @@ export default {
             this.task_id = this.$route.params.id;
           
             const res  = await axios.get(`/clients/tasks/${this.task_id}/submits`, {
-                api: "FNA_API",
+                api: "revision",
+				oauth: true
 			});
             this.list = res.data.resources;
 
@@ -108,7 +109,8 @@ export default {
             this.loading_table = false;
               for(let n = 1; n <= this.page_size; n++){
                 const total = await axios.get(`/clients/tasks/${this.task_id}/submits?page=${n}`, {
-                api: "FNA_API",
+                api: "revision",
+				oauth: true
 			});
 
               this.complete_list =  this.complete_list.concat(total.data.resources)
@@ -145,7 +147,8 @@ export default {
             
             
                 const res = await axios.get(`/clients/tasks/${this.task_id}/submits?page=${val}`, {
-                api: "FNA_API",
+                    api: "revision",
+				    oauth: true
                 })
                 
                 this.list = res.data.resources;

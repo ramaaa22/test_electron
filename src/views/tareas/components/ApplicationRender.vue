@@ -1,7 +1,8 @@
 <template>
 <div>
 
-    <div id="component-application">
+    <el-row type="flex" justify="end">
+    <el-col class="mr-2" :span="2">
         <el-tooltip placement="top-start" content="Descargar en PDF">
             <el-button 
                 icon="el-icon-download" 
@@ -11,7 +12,8 @@
                 @click="downloadPdf">
             </el-button>
         </el-tooltip>
-    </div>
+    </el-col>
+    </el-row>
 
     <el-collapse 
         id="component-application"
@@ -101,7 +103,7 @@
 </template>
 
 <script>
-import PdfViewer from '@/views/table/components/PdfViewer';
+import PdfViewer from '@/views/tareas/components/PdfViewer';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 

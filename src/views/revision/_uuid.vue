@@ -48,7 +48,7 @@ import ApplicationsTable from '@/views/revision/components/ApplicationsTable'
 import ApplicationRender from '@/views/revision/components/ApplicationRender'
 import EvaluationTable from '@/views/revision/components/EvaluationTable'
 import TasksTable from '@/views/revision/components/TasksTable'
-//import Download from '@/views/table/components/Download'
+//import Download from '@/views/tareas/components/Download'
 import axios from '@/utils/request';
 
 export default {
