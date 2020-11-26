@@ -180,5 +180,9 @@ export default {
  .el-drawer__body {
    overflow: auto
  }
+
+ .el-drawer__header {
+    margin-top: 20px;
+ }
 </style>
 
