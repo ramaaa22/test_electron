@@ -1,62 +1,60 @@
 <template >
-<el-main>
+    <el-main>
+        <el-row type="flex" justify="center">
+            <el-col :span="16">
+                <el-row>
+                    <el-col class="is-flex is-justify-flex-end">
+                        <download :list="complete_list"/>
+                    </el-col>   
+                </el-row> 
 
-    <el-row type="flex" justify="center">
-        <el-col :span="16">
+                <el-table
+                    class="pointer"
+                    v-loading="loading_table"
+                    :data="list"
+                    border
+                    :stripe="true"
+                    fit
+                    highlight-current-row
+                    @row-click="open">
+                        <el-table-column 
+                            align="center" 
+                            label="Nombre">
+                            <template slot-scope="scope">
+                                {{scope.row.user.firstname | capitalize}}
+                            </template>
+                        </el-table-column>
+                        <el-table-column
+                            align="center" 
+                            label="Apellido">
+                            <template slot-scope="scope">
+                                {{scope.row.user.lastname | capitalize}}
+                            </template>
+                        </el-table-column>
+                </el-table>
+            </el-col>
+        </el-row>
 
-            <el-row>
-                <el-col class="is-flex is-justify-flex-end">
-                    <download :list="complete_list"/>
-                </el-col>   
-            </el-row> 
+        <el-pagination 
+            align='center' 
+            @current-change="changeCurrent" 
+            :current-page="this.current_page"  
+            layout="prev, pager, next" 
+            :page-count="page_size">
+        </el-pagination> 
 
-        <el-table
-            class="pointer"
-            v-loading="loading_table"
-            :data="list"
-            border
-            fit
-            highlight-current-row
-            @row-click="open">
-                <el-table-column 
-                    align="center" 
-                    label="Nombre" 
-                    prop="user.firstname">
-                </el-table-column>
-
-                <el-table-column
-                    sortable
-                    align="center" 
-                    label="Apellido" 
-                    prop="user.lastname">
-                </el-table-column>
-        </el-table>
-
-        </el-col>
-
-    </el-row>
-
-    <el-pagination 
-        align='center' 
-        @current-change="changeCurrent" 
-        :current-page="this.current_page"  
-        layout="prev, pager, next" 
-        :page-count="page_size">
-    </el-pagination> 
-
-    <el-drawer 
-        class="drawer"
-        v-loading="loading_drawer"
-        :visible.sync="visible"
-        @close="close"
-        size="50%">
-            <application-render
-                :name="name"
-                :title="title" 
-                :application="application"/>   
-    </el-drawer>
-
-</el-main>
+        <el-drawer 
+            class="drawer"
+            v-loading="loading_drawer"
+            :visible.sync="visible"
+            @close="close"
+            size="50%">
+                <application-render
+                    :name="name"
+                    :title="title" 
+                    :application="application"/>   
+        </el-drawer>
+    </el-main>
 </template>
 
 <script>
@@ -68,6 +66,15 @@ import axios from "@/utils/request";
 
 
 export default {
+    filters:{
+		capitalize(value){            
+            return value.toLowerCase()
+            .trim()
+            .split(' ')
+            .map( v => v[0].toUpperCase() + v.substr(1) )
+            .join(' '); 
+		}
+	},
     props: {
         visible: Boolean,
         loading_drawer: Boolean,
@@ -86,7 +93,6 @@ export default {
 
     async mounted() {
         this.loading_table = true
-        
         try {
             this.task_id = this.$route.params.id;
           
