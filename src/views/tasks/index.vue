@@ -10,10 +10,11 @@
 				element-loading-text="Loading"
 				border
 				fit
+				:stripe="true"
 				highlight-current-row
 				@row-click="row">
 
-					<el-table-column label="Nombre">
+					<el-table-column label="Nombre"  align="center">
 						<template slot-scope="scope">
 							{{ scope.row.name }}
 						</template>
@@ -21,7 +22,7 @@
 
 					<el-table-column label="Tipo" align="center">
 						<template slot-scope="scope">
-							<span>{{ scope.row.type }}</span>
+							<span>{{ scope.row.type | capitalize }}</span>
 						</template>
 					</el-table-column>
 
@@ -45,6 +46,11 @@ import axios from "@/utils/request";
 
 
 export default {  
+	filters:{
+		capitalize(value){
+			return value.charAt(0).toUpperCase() + value.slice(1)
+		}
+	},
   	data: () => ({
       	list: [],
       	listLoading: false
