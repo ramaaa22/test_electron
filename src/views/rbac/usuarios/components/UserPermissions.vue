@@ -46,14 +46,17 @@
                             <span><h6>{{scope.row.service.name}}</h6></span>
                         
 
-                              <el-select  v-model="scope.row.scopes_choose" multiple placeholder="Select">
+                            <el-select  
+                                @change="modifyAccess(scope.row, scope.row.uuid)" 
+                                v-model="scope.row.scopes_choose" 
+                                multiple 
+                                placeholder="Select">
                                 <el-option
                                         v-for="(elem, index) in scope.row.scopes"
                                         :key="index"
-                                        :value="elem"
-                                        @change="h(scope.row.scope_choose)">
+                                        :value="elem">
                                 </el-option>
-                                </el-select>
+                            </el-select>
 
                 
                         </template>
@@ -194,8 +197,39 @@
                 this.services_availables = new_array;
             },
 
-            h(scope){
-                console.log(scope)
+            async modifyAccess(row){
+                let scope = row.scopes_choose;
+                let uuid = row.uuid;
+                let waiting_for_save = row.not_saved;
+
+                if(scope.length === 0){
+                    try {
+                        const { data } = await axios.delete(`/accesses/${uuid}`, {
+                        api: "users",
+                        oauth: true,
+                        });
+
+                        await this.retrieveAccesses();
+                    } catch (error) {
+                        console.log(error)
+                    }finally{
+                        this.actualizeServicesAvailables();
+                    }
+                }/*else{
+                    if(waiting_for_save === true){
+                        1) scope_choose.join();
+                        2)se envia sendAccesses 
+                        3) retrieve accesses
+                        4)actualize services availables.
+                        
+                    }else{
+                        1) scope_choose.join();
+                        2) put o patch al acceso con el uuid,
+                        3) retrieve accesses
+                        4) actualzeservicesavailables
+                    }
+                }*/ 
+                
             },
            
         },
