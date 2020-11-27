@@ -115,11 +115,13 @@
                         oauth: true,
                     });
 
-                    this.accesses = response.data.resource.accesses;
-                    this.accesses.map( access => {
+                    const res = response.data.resource.accesses;
+                    res.map( access => {
                         access.scopes = this.splitAccesses(access.scopes);
                         access.scopes_choose = access.scopes;
                     })
+
+                    this.accesses = res;
 
                 } catch (error) {
                     console.log(error)
@@ -127,6 +129,20 @@
                 finally{
                     this.loading = false;
                 }
+            },
+
+            async sendAccess(service, scope){
+                try {
+                    const { data } = await axios.post(`/users/${this.row.uuid}/accesses`,{service_slug: service.slug, scopes: scope}, {
+                        api: "users",
+                        oauth: true,
+                    }); 
+                   
+                } 
+                catch (error) {
+                   console.log(error)
+                }
+                
             },
             
             async addNewAccess(service) {
@@ -145,34 +161,23 @@
                             this.accesses.push(service)
                             this.actualizeServicesAvailables;
                         }else{
-                            await sendAccess(service, scope)
+                            await this.sendAccess(service, scope)
                         }*/
 
                     }else{
-                        await sendAccess(service, null);
+                        await this.sendAccess(service, null);
+                        await this.retrieveAccesses();
                     }
 
                 }catch(error){
                     console.log(error)
-                }            
-            },
-
-            async sendAccess(service, scope){
-                try {
-                    const { data } = await axios.post(`/users/${this.row.uuid}/accesses`,{service_slug: service.slug, scopes: scope}, {
-                        api: "users",
-                        oauth: true,
-                    }); 
-                }
-                catch (error) {
-                   console.log(error)
                 }
                 finally{
-                    await this.retrieveAccesses;
-                    this.actualizeServicesAvailables;
+                    this.actualizeServicesAvailables();
                 }
             },
-            
+
+         
             splitAccesses(accesses) {
                 let accesess_array = accesses.split(",");
                 return accesess_array;
