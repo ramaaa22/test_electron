@@ -9,6 +9,7 @@
 						:data="list"
 						element-loading-text="Loading"
 						border
+						size="mini"
 						fit
 						:stripe="true"
 						highlight-current-row

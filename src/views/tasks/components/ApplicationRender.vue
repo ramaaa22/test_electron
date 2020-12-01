@@ -1,19 +1,19 @@
 <template>
 <div>
 
-    <el-row type="flex" justify="end">
-    <el-col class="mr-2" :span="2">
-        <el-tooltip placement="top-start" content="Descargar en PDF">
-            <el-button 
-                icon="el-icon-download" 
-                plain 
-                circle 
-                type="success" 
-                @click="downloadPdf">
-            </el-button>
-        </el-tooltip>
-    </el-col>
-    </el-row>
+    <el-row>
+        <el-col class="is-flex is-justify-flex-end">
+            <el-tooltip placement="top-start" content="Descargar en PDF">
+                <el-button 
+                    icon="el-icon-download" 
+                    plain 
+                    circle 
+                    type="success" 
+                    @click="downloadPdf">
+                </el-button>
+            </el-tooltip>
+        </el-col>   
+    </el-row> 
 
     <el-collapse 
         id="component-application"

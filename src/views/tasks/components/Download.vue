@@ -1,15 +1,19 @@
 <template>
 <div> 
-
-	<el-button 
-		:loading="downloadLoading" 
-		style="margin:0 0 20px 0" 
-		type="success"
-        plain 
-		icon="el-icon-document" 
-		@click="handleDownload">
-		Exportar a Excel
-	</el-button>
+    <el-tooltip
+        effect="dark"
+        content="Descargar a Excel"
+        placement="top">
+            <el-button 
+                :loading="downloadLoading" 
+                style="margin:0 0 20px 0" 
+                type="success"
+                plain 
+                circle
+                icon="el-icon-document" 
+                @click="handleDownload">
+            </el-button>
+    </el-tooltip>
 
 </div>
 </template>
