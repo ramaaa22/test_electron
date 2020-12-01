@@ -150,16 +150,16 @@ export default {
     async open(row) {
             const task = this.task_id;
           	try {
-                const user_id = row.uuid;
+                let user_id = row.uuid;
 
                 const res = await axios.get(`/clients/tasks/${task}/submits/${user_id}`, {
                     api: "revision",
                     oauth: true
                 })
 
-                const application = res.data.resource.submit;
+                let application = res.data.resource.submit;
 
-                const name = `information-${row.uud}`;
+                let name = `information-${user_id}`;
 
                 const tab = this.tabs.items.find(tab => (tab.name === name));
 
