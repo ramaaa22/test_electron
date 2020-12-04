@@ -93,7 +93,14 @@ export default {
                 const idnumber = data.resource.idnumber
                 const name =  `application-${idnumber}`;
 
-                const tab = this.tabs.items.find(tab => (tab.name === name));
+                this.$router.push({
+                    name: 'form-viewer-index',
+                    params: {
+                        uuid: application_uuid,
+                        application: steps
+                    }
+                })
+                /*const tab = this.tabs.items.find(tab => (tab.name === name));
 
                 if (!tab)
                     this.tabs.items.push({
@@ -103,7 +110,7 @@ export default {
                         props: { steps, idnumber }
                     });
 
-                this.tabs.active = name
+                this.tabs.active = name*/
             } 
             catch (error) {
                 console.log(error)

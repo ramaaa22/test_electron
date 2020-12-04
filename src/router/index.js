@@ -142,6 +142,52 @@ export const routes = [
 		]
 	},
 	
+	{
+		path: '/preselection',
+		name: 'preselection',
+		component: Layout,
+		children: [
+			{
+				path: '/preselections',
+				name: 'preselections',
+				component: () => import('@/views/preselection/index'),
+				meta:{
+					require_auth: true,
+					title: 'Preselección',
+				}
+			},
+			{
+				path: '/:id', 
+				name: 'preselection-id',
+				hidden:true,
+				component: () => import('@/views/tasks/_id'),
+				meta: {title: null, require_auth: true}
+            }
+		]
+
+	},
+
+	
+	{
+		path: '/form-viewer',
+		name: 'form-viewer',
+		component: Layout,
+		hidden:true,
+		children: [
+			{
+				path: '/form-viewer/:id',
+				name: 'form-viewer-index',
+				hidden: true,
+				component: () => import('@/views/form-viewer/index'),
+				meta:{
+					require_auth: true,
+
+				}
+			},
+			
+		]
+
+	},
 
 	{
 		path: '/404',

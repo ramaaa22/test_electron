@@ -13,7 +13,7 @@
 						fit
 						:stripe="true"
 						highlight-current-row
-						@row-click="row">
+						@row-click="redirect">
 							<el-table-column label="Nombre"  align="center">
 								<template slot-scope="scope">
 									{{ scope.row.name }}
@@ -70,9 +70,9 @@ export default {
 		}
 	},
 	methods:{
-		row(row){
-			this.$emit('row', row)
-		}
+		async redirect(row){
+				this.$router.push({ name: 'task-id' , params: { id: row.uuid, task: row, title: row.name}})
+		},
 	}
 }
 </script>
