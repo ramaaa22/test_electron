@@ -107,9 +107,10 @@ export default {
                             path: '/convocatorias',
                             redirect: true,
                             child:{
-                            name: this.announcement_name,
-                            path: `/convocatorias/${this.announcement_uuid}`,
-                            uuid: this.announcement_uuid
+                                name: this.announcement_name,
+                                route_name: 'revision.announcements.single',
+                                path: `/convocatorias/${this.announcement_uuid}`,
+                                uuid: this.announcement_uuid
                             }
                         },
                        

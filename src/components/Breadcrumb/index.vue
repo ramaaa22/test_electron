@@ -75,7 +75,7 @@ export default {
                  matched.push(
                     {meta:{ title: this.$route.params.parent.name }, path:  this.$route.params.parent.path}, 
                     {meta:{ title:  this.$route.params.parent.child.name}, path:  this.$route.params.parent.child.path, params: {title: this.$route.params.parent.child.name, uuid: this.$route.params.parent.child.uuid},
-                    isAnnouncement: true}, 
+                    isAnnouncement: true, route_name: this.$route.params.parent.child.route_name}, 
                     { meta:{ title: title }, path: path_route}
                 )
             }
@@ -95,14 +95,14 @@ export default {
         },
 
         handleLink(item) {
-            const { redirect, path, params, isAnnouncement } = item
+            const { redirect, path, params, isAnnouncement, route_name } = item
     
             if (redirect) {
                 this.$router.push(redirect)
                 return
             }else if(isAnnouncement){
                 this.$router.push({
-                    name: 'revision.announcements.single',
+                    name: route_name,
 				    params: params})
             } 
             this.$router.push(this.pathCompile(path, params ))
