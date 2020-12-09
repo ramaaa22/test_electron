@@ -64,6 +64,9 @@ export default {
     computed: {
         announcement_uuid () {
             return this.$route.params.uuid;
+        },
+        announcement_name () {
+            return this.$route.params.title;
         }
     },
    
@@ -96,8 +99,20 @@ export default {
                 this.$router.push({
                     name: 'form-viewer-index',
                     params: {
-                        uuid: application_uuid,
-                        application: steps
+                        id: application_uuid,
+                        application: steps,
+                        title: idnumber,
+                        parent: {
+                            name: 'Revision',
+                            path: '/convocatorias',
+                            redirect: true,
+                            child:{
+                            name: this.announcement_name,
+                            path: `/convocatorias/${this.announcement_uuid}`,
+                            uuid: this.announcement_uuid
+                            }
+                        },
+                       
                     }
                 })
                 /*const tab = this.tabs.items.find(tab => (tab.name === name));

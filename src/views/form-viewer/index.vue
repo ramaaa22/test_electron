@@ -105,7 +105,7 @@
 </template>
 
 <script>
-import PdfViewer from '@/views/review/components/PdfViewer';
+import PdfViewer from '@/views/form-viewer/components/PdfViewer';
 import moment from 'moment';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
@@ -131,6 +131,7 @@ export default {
 
     mounted() {
         this.$setHeights();
+        console.log(this.$route.params)
     },
     
     methods: {

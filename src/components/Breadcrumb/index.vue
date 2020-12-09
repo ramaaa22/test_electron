@@ -50,13 +50,13 @@ export default {
             
             console.log(this.$route)
             
-            if(title_route === null){
+            if(!title_route){
                 title = title_in_param;
             }else{
                 title = title_route
             };
 
-            if(parent.name){
+            if(parent.name && !this.$route.params.parent){
                 matched.push(
                     {meta:{ title: parent.meta.title }, path: parent.path, redirect: 'no_redirect'}, 
                     { meta:{ title: title }, path: path_route}
@@ -71,6 +71,13 @@ export default {
                     {meta:{ title: 'Tareas' }, path: '/tasks'}, 
                     { meta:{ title: title }, path: path_route}
                 )
+            } else if(this.$route.params.parent && this.$route.params.parent.child){
+                 matched.push(
+                    {meta:{ title: this.$route.params.parent.name }, path:  this.$route.params.parent.path}, 
+                    {meta:{ title:  this.$route.params.parent.child.name}, path:  this.$route.params.parent.child.path, params: {title: this.$route.params.parent.child.name, uuid: this.$route.params.parent.child.uuid},
+                    isAnnouncement: true}, 
+                    { meta:{ title: title }, path: path_route}
+                )
             }
             else{
                 matched.push({ meta:{ title: title }, path: path_route});
@@ -80,23 +87,25 @@ export default {
             
         },
 
-        
     
-        pathCompile(path) {
-            const { params } = this.$route
-            
+        pathCompile(path, params) {
+
             let toPath = pathToRegexp.compile(path)
             return toPath(params)
         },
 
         handleLink(item) {
-            const { redirect, path } = item
-
+            const { redirect, path, params, isAnnouncement } = item
+    
             if (redirect) {
                 this.$router.push(redirect)
                 return
-            }
-            this.$router.push(this.pathCompile(path))
+            }else if(isAnnouncement){
+                this.$router.push({
+                    name: 'revision.announcements.single',
+				    params: params})
+            } 
+            this.$router.push(this.pathCompile(path, params ))
         }
     }
     }
