@@ -2,14 +2,13 @@
 <el-main>
     <div 
         id="tabs-container"
-        class="app-container"
-        v-loading="!announcement">
+        class="app-container">
         <el-tabs 
             type="border-card" 
             v-model="tabs.active"
             @tab-remove="removeTab">
             <el-tab-pane 
-                v-if="announcement"
+     
                 name="applications"
                 label="Inscripciones"
                 :closable="false">
@@ -70,7 +69,7 @@ export default {
         }
     },
    
-    async mounted(){
+    async created(){
         try {
             const endpoint = `/clients/announcements/${this.announcement_uuid}`;
             const { data } = await axios.get(endpoint, {   api: "revision",
@@ -102,6 +101,7 @@ export default {
                         id: application_uuid,
                         application: steps,
                         title: idnumber,
+                        type: 'review',
                         parent: {
                             name: 'Revision',
                             path: '/convocatorias',

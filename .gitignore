@@ -20,3 +20,4 @@ tests/**/coverage/
 .env.production
 #Electron-builder output
 /dist_electron
+/src/views/preselection
