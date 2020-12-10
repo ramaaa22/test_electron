@@ -90,6 +90,7 @@ export default {
                 const endpoint = `/clients/announcements/${this.announcement_uuid}/applications/${application_uuid}`;
                 const { data } = await axios.get(endpoint, {   api: "revision",
                 oauth: true });
+                
 
                 const steps = data.resource.form
                 const idnumber = data.resource.idnumber
@@ -102,6 +103,7 @@ export default {
                         application: steps,
                         title: idnumber,
                         type: 'review',
+                        uuid: this.announcement_uuid,
                         parent: {
                             name: 'Revision',
                             path: '/convocatorias',
