@@ -1,7 +1,7 @@
 <template>
 <div>
         <el-table 
-            :data="submits"
+            :data="tasks"
             border
             fit
             size="mini">
@@ -38,23 +38,27 @@
 
         </el-table>
 
-        <el-dialog>
-
+        <el-dialog  
+            :visible="visible">
+            <application-render
+                :steps="complete_task"/>
         </el-dialog>    
 </div>
 </template>
 <script>
 import axios from '@/utils/request';
+import ApplicationRender from '@/views/form-viewer/components/ApplicationRender';
 
 export default {
     data: () => ({
         loading: true,
-        complete_task: []
+        complete_task: [],
+        visible: false
     }),
 
     props:{
         tasks: Array,
-        idnumber: Number
+        idnumber: String
     },
 
     methods: {
@@ -72,6 +76,10 @@ export default {
                 console.log(error)
             }
         },
+    },
+
+    components: {
+        ApplicationRender
     }
 }
 </script>
