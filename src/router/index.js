@@ -141,7 +141,7 @@ export const routes = [
 			},
 		]
 	},
-	
+	/*
 	{
 		path: '/preselection',
 		name: 'preselection',
@@ -165,7 +165,7 @@ export const routes = [
             }
 		]
 
-	},
+	},*/
 
 	
 	{
