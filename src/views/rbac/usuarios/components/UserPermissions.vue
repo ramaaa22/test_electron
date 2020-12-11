@@ -3,66 +3,58 @@
         <el-row
             type="flex"
             justify="center">
+                <el-col class="mt-2" :span="6">
+                    <user-information 
+                        @actualize="emit"
+                        :row="row"/>
+                </el-col>
+                <el-col
+                    class="mt-2 px-3"
+                    :span="18">
 
-            <el-col class="mt-2" :span="6">
-                <user-information 
-                    @actualize="emit"
-                    :row="row" />
-            </el-col>
+                    <el-dropdown>
+                        <el-button type="primary" plain size="small">
+                            Añadir servicios
+                            <i class="el-icon-arrow-down el-icon--right"></i>
+                        </el-button>
+                        <el-dropdown-menu slot="dropdown">
+                            <el-dropdown-item 
+                                v-for="(service, index) in services_availables"
+                                :key="`service-${index}`"
+                                @click.native="addNewAccess(service)">
+                                {{service.name}}
+                            </el-dropdown-item>
+                        </el-dropdown-menu>
+                    </el-dropdown>
 
+                    <el-table
+                        v-loading="loading"
+                        :data="accesses"
+                        border
+                        fit
+                        size="mini">
+                            <el-table-column
+                                label="Permisos"
+                                align="center">
+                                    <template slot-scope="scope">
+                                        <span><h6>{{scope.row.name}}</h6></span>
 
-            <el-col
-                class="mt-2 px-3"
-                :span="18">
-
-                <el-dropdown>
-                    <el-button type="primary" plain size="small">
-                        Añadir servicios
-                        <i class="el-icon-arrow-down el-icon--right"></i>
-                    </el-button>
-                    <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item 
-                            v-for="(service, index) in services_availables"
-                            :key="`service-${index}`"
-                            @click.native="addNewAccess(service)">
-                            {{service.name}}
-                        </el-dropdown-item>
-                    </el-dropdown-menu>
-                </el-dropdown>
-
-                <el-table
-                    v-loading="loading"
-                    :data="accesses"
-                    border
-                    fit
-                    size="mini">
-                    
-                    
-                    <el-table-column
-                        label="Permisos"
-                        align="center"
-                        >
-                        <template slot-scope="scope">
-                            <span><h6>{{scope.row.service.name}}</h6></span>
-                        
-
-                            <el-select  
-                                @change="modifyAccess(scope.row, scope.row.uuid)" 
-                                v-model="scope.row.scopes_choose" 
-                                multiple 
-                                placeholder="Select">
-                                <el-option
-                                        v-for="(elem, index) in scope.row.scopes"
-                                        :key="index"
-                                        :value="elem">
-                                </el-option>
-                            </el-select>
-
-                
-                        </template>
-                    </el-table-column>
-                </el-table>
-            </el-col>
+                                        <el-select  
+                                            @change="modifyAccess(scope.row, scope.row.uuid)" 
+                                            v-model="scope.row.scopes_choose" 
+                                            multiple 
+                                            placeholder="Select">
+                                                <el-option
+                                                    v-for="(elem, index) in scope.row.scopes"
+                                                    :key="index"
+                                                    :value="elem">
+                                                    {{elem}}
+                                                </el-option>
+                                        </el-select>
+                                    </template>
+                            </el-table-column>
+                    </el-table>
+                </el-col>
         </el-row>
     </div>
 </template>
@@ -157,16 +149,26 @@
                     });
                     
                     if(data.resource.url !== null){
-                        console.log('falta el endpoint')
-                        // pendiente endpoint de obtener los scopes de los servicios con url
-                       /* if(scope > 1){
-                            service.not_saved = true;
-                            this.accesses.push(service)
+ 
+                        const res = await axios.get(`${data.resource.url}`);
+
+                        let scopes = []
+                        for(let scope of res.data){
+                           scopes.push(scope.description)
+                        }
+                    
+                        if(scopes.length > 1){
+                            this.accesses.push({
+                                name: service.name,
+                                slug: service.slug,
+                                scopes: scopes,
+                                not_saved : true
+                            })
                             this.actualizeServicesAvailables;
                         }else{
-                            await this.sendAccess(service, scope)
-                        }*/
-
+                           // await this.sendAccess(service, scope)
+                           console.log('j')
+                        }
                     }else{
                         await this.sendAccess(service, null);
                         await this.retrieveAccesses();
@@ -215,20 +217,19 @@
                     }finally{
                         this.actualizeServicesAvailables();
                     }
-                }/*else{
+                }else{
                     if(waiting_for_save === true){
-                        1) scope_choose.join();
-                        2)se envia sendAccesses 
-                        3) retrieve accesses
-                        4)actualize services availables.
-                        
+                        let scopes = scope.join();
+                        await this.sendAccess(row, scopes);
+                        await this.retrieveAccesses();
+                        this.actualizeServicesAvailables();                  
                     }else{
-                        1) scope_choose.join();
-                        2) put o patch al acceso con el uuid,
+                        let scopes = scope_choose.join();
+                        /*2) put o patch al acceso con el uuid,
                         3) retrieve accesses
-                        4) actualzeservicesavailables
+                        4) actualzeservicesavailables*/
                     }
-                }*/ 
+                } 
                 
             },
            
