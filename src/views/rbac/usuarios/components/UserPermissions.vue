@@ -37,7 +37,7 @@
                                 label="Permisos"
                                 align="center">
                                     <template slot-scope="scope">
-                                        <span><h6>{{scope.row.name}}</h6></span>
+                                        <span><h6>{{scope.row.service.name}}</h6></span>
 
                                         <el-select  
                                             @change="modifyAccess(scope.row, scope.row.uuid)" 
@@ -66,15 +66,10 @@
     export default {
         data: () => ({
             loading: false,
-            dialog_visible: false,
-            choose_service: null,
-            choose_url: null,
-            not_url: false,
             services_availables:[],
             accesses_availables:[],
             services:[],
             accesses:[],
-            value1: []
         }),
 
         props: {
@@ -86,6 +81,7 @@
             await this.retrieveServices();
             await this.retrieveAccesses();
             await this.actualizeServicesAvailables();
+            
         },
 
         methods: {
@@ -111,10 +107,27 @@
                     });
 
                     const res = response.data.resource.accesses;
-                    res.map( access => {
-                        access.scopes = this.splitAccesses(access.scopes);
-                        access.scopes_choose = access.scopes;
-                    })
+
+                    for(let access of res) {
+                        access.scopes_choose = this.splitAccesses(access.scopes);
+
+                        const { data } = await axios.get(`/services/${access.service.name}`, {
+                        api: "users",
+                        oauth: true,
+                        });
+                    
+                        if(data.resource.url !== null){
+                            const url = await axios.get(`${data.resource.url}/oauth/scopes`);
+                            let scopes = [];
+
+                            for(let scope of url.data){
+                                scopes.push(scope.description)
+                            }
+                            access.scopes = scopes;
+                        }else{
+                            access.scopes = this.splitAccesses(access.scopes);
+                        }
+                    }
 
                     this.accesses = res;
 
@@ -142,7 +155,6 @@
             
             async addNewAccess(service) {
                 try{
-                    // obtenemos los datos del servicio
                     const { data } = await axios.get(`/services/${service.name}`, {
                         api: "users",
                         oauth: true,
@@ -150,7 +162,7 @@
                     
                     if(data.resource.url !== null){
  
-                        const res = await axios.get(`${data.resource.url}`);
+                        const res = await axios.get(`${data.resource.url}/oauth/scopes`);
 
                         let scopes = []
                         for(let scope of res.data){
@@ -159,15 +171,16 @@
                     
                         if(scopes.length > 1){
                             this.accesses.push({
-                                name: service.name,
+                                service:{
+                                    name: service.name,
+                                },
                                 slug: service.slug,
                                 scopes: scopes,
                                 not_saved : true
                             })
                             this.actualizeServicesAvailables;
                         }else{
-                           // await this.sendAccess(service, scope)
-                           console.log('j')
+                           await this.sendAccess(service, scopes)
                         }
                     }else{
                         await this.sendAccess(service, null);
@@ -181,21 +194,15 @@
                     this.actualizeServicesAvailables();
                 }
             },
-
          
             splitAccesses(accesses) {
                 let accesess_array = accesses.split(",");
                 return accesess_array;
             },
 
-            emit(uuid) {
-                this.$emit("actualize-user-edit", uuid);
-            },
-
             actualizeServicesAvailables() {
                 let arr_accesses = this.accesses.map(access => access.service.name);
                 let new_array = this.services.filter(service => arr_accesses.indexOf(service.name)==-1);
- 
                 this.services_availables = new_array;
             },
 
@@ -217,6 +224,7 @@
                     }finally{
                         this.actualizeServicesAvailables();
                     }
+
                 }else{
                     if(waiting_for_save === true){
                         let scopes = scope.join();
@@ -224,10 +232,13 @@
                         await this.retrieveAccesses();
                         this.actualizeServicesAvailables();                  
                     }else{
-                        let scopes = scope_choose.join();
-                        /*2) put o patch al acceso con el uuid,
-                        3) retrieve accesses
-                        4) actualzeservicesavailables*/
+                        let scopes = scope.join();
+                        const { data } = await axios.put(`/accesses/${uuid}`, {scopes: scopes}, {
+                            api: "users",
+                            oauth: true,
+                        });
+                        await this.retrieveAccesses();
+                        this.actualizeServicesAvailables(); 
                     }
                 } 
                 
