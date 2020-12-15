@@ -61,9 +61,9 @@ export default {
                     {meta:{ title: parent.meta.title }, path: parent.path, redirect: 'no_redirect'}, 
                     { meta:{ title: title }, path: path_route}
                 )
-            }else if( name === '/convocatorias/:uuid'){
+            }else if( name === '/revision/:uuid'){
                  matched.push(
-                    {meta:{ title: 'Revision' }, path: '/convocatorias'}, 
+                    {meta:{ title: 'Revision' }, path: '/revision'}, 
                     { meta:{ title: title }, path: path_route}
                 )
             }else if( name === '/task/:id'){

@@ -125,8 +125,14 @@ export default {
 						},
 					]
 				})
-				}else{
-					null
+				}else if (access.service.name === 'Revisión'){
+					icon = 'las la-tasks';
+					final_access.push({
+					path: `/${access.service.slug}`,
+					meta: {
+						icon: icon,
+						title: access.service.name
+					}})
 				}
 				
 				
