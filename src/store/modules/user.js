@@ -26,23 +26,6 @@ const actions = {
         
         setToken('users', token);
     },
-
-    async loginRevision({commit}){
-        const request = new FormData();
-
-        request.append('grant_type', 'client_credentials');
-        request.append('scope', '*');
-        request.append('client_id', process.env.VUE_APP_REVISION_CLIENT_ID);
-        request.append('client_secret', process.env.VUE_APP_REVISION_CLIENT_SECRET);
-
-        const { data } = await axios.post('/oauth/token', request,
-        {
-            api: 'revision'
-        });
-
-        setToken('revision', data.access_token);
-
-    },
     
     async retrieveUser({ commit }) {
         try {
@@ -51,6 +34,12 @@ const actions = {
                 oauth: true
             });
             const user = data.resource;
+
+            for(let access of user.accesses){
+                if(access.access_token){
+                    setToken(`${access.service.slug}`, access.access_token);
+                }
+            }
 
             commit('SET_USER', user);
         }

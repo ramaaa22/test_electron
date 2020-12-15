@@ -83,8 +83,6 @@ export default {
                 await this.$store.dispatch('user/login', this.form);
 
                 this.$router.push({ path: '/', params: this.redirectParams });
-
-                await this.$store.dispatch('user/loginRevision');
             }
             catch (error) {
                 const { response } = error;
