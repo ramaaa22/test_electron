@@ -47,12 +47,13 @@ export default {
         try {
             this.loading = true;
 
-            const { data } = await axios.get("/clients/announcements", {
+            const { data } = await axios.get("/revisions", {
                 api: "revision",
                 oauth: true
             });
 
             this.announcements = data.resources;
+            //this.announcements = data.resources.announcements?;
         } catch (error) {
             console.log(error);
         } finally {

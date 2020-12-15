@@ -88,6 +88,10 @@ export default {
             try {
                 this.loading = true
                 const endpoint = `/clients/applications/${this.application_uuid}/evaluations`;
+
+                //API SEBA
+                //const endpoint = `applications/${this.application_uuid}/evaluations`;
+
                 const  { data }  = await axios.get(endpoint, {   api: "revision",
                 oauth: true });
 
@@ -108,6 +112,9 @@ export default {
                 const evaluation_table_uuid = evaluation.evaluation_table.uuid
                 const evaluation_uuid = evaluation.uuid
                 const endpoint = `/clients/evaluation-tables/${evaluation_table_uuid}/evaluations/${evaluation_uuid}`;
+
+                //API SEBA
+                //const endpoint = ``
 
             try {
                 await axios.delete(endpoint, {   api: "revision",

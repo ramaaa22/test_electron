@@ -652,9 +652,15 @@ export default {
 
     async mounted() {
         try {
-            const { data: provinces } = await axios.get('/places/provinces', {   api: "revision",
+            const { data: provinces } = await axios.get('/places/provinces', {   api: "test",
                 oauth: true });
-            const { data: evaluation_tables } = await axios.get(`/clients/announcements/${this.announcement_uuid}/evaluation-tables`, {
+            /*const { data: evaluation_tables } = await axios.get(`/clients/announcements/${this.announcement_uuid}/evaluation-tables`, {
+                  api: "revision",
+                oauth: true
+            });*/
+
+            //API SEBA
+            const { data: evaluation_tables } = await axios.get(`/revisions/${this.announcement_uuid}/evaluation-tables`, {
                   api: "revision",
                 oauth: true
             });
@@ -820,6 +826,9 @@ export default {
                 this.loading = true;
 
                 const endpoint = `/clients/announcements/${this.announcement_uuid}/applications/${application_uuid}`;
+                //API SEBA
+                //const endpoint = `/revisions/${this.announcement_uuid}/applications/${application_uuid}`;
+
                 const { data } = await axios.put(endpoint, { blocked: blocked ? 0 : 1 }, {   api: "revision",
                 oauth: true });
 

@@ -71,7 +71,9 @@ export default {
    
     async created(){
         try {
-            const endpoint = `/clients/announcements/${this.announcement_uuid}`;
+            //const endpoint = `/clients/announcements/${this.announcement_uuid}`;
+            //API SEBA
+            const endpoint = `/revisions/${this.announcement_uuid}`;
             const { data } = await axios.get(endpoint, {   api: "revision",
             oauth: true });
             const { name, columns, filters, types } = data.resource;
@@ -88,6 +90,9 @@ export default {
         async openApplication(application_uuid){
             try {
                 const endpoint = `/clients/announcements/${this.announcement_uuid}/applications/${application_uuid}`;
+                //API SEBA
+                //const endpoint= `/revisions/${this.announcement_uuid}/applications/${application_uuid}`;
+                
                 const { data } = await axios.get(endpoint, {   api: "revision",
                 oauth: true });
                 
@@ -181,6 +186,10 @@ export default {
         async openSubmit(submit, idnumber){
             try {
                 const endpoint = `/clients/tasks/${submit.task.uuid}/submits/${submit.uuid}`;
+                //API SEBA
+                //const endpoint = `/users/${idnumber}/revision/${submit.task.uuid}/tasks/submit`
+                
+                
                 const  {data}  = await axios.get(endpoint, {   api: "revision",
                 oauth: true });
                 
