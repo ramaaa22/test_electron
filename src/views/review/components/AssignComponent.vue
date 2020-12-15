@@ -170,6 +170,11 @@ export default {
                       api: "revision",
                 oauth: true 
                 });
+                //API SEBA
+                /*const { data } = await axios.get(`/users/${this.jury_idnumber}`, { 
+                      api: "revision",
+                oauth: true 
+                });*/
 
                 this.jury = data.resource;
                 
@@ -200,6 +205,9 @@ export default {
             const jury_uuid = this.jury.uuid;
             const evaluation_table_uuid = this.evaluation_table.uuid;
             const url = `/clients/evaluation-tables/${evaluation_table_uuid}/evaluations`;
+
+            //API SEBA
+            //const url = `/evaluation-tables/${evaluation_table_uuid}/evaluations`;
 
             for (let i=0; i < keys.length; i++) {
                 const application_uuid = this.selected_applications[i];
