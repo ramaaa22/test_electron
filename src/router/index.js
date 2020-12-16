@@ -21,6 +21,7 @@ export const routes = [
 		path: '/',
 		component: Layout,
 		redirect: { name: 'form-builder' },
+		hidden:true,
 		children: [
 			{
 				path: '/crear-formulario',
