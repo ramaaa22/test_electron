@@ -72,6 +72,7 @@ export default {
     async created(){
         try {
             //const endpoint = `/clients/announcements/${this.announcement_uuid}`;
+            
             //API SEBA
             const endpoint = `/revisions/${this.announcement_uuid}`;
             const { data } = await axios.get(endpoint, {   api: "revision",
@@ -187,7 +188,7 @@ export default {
             try {
                 const endpoint = `/clients/tasks/${submit.task.uuid}/submits/${submit.uuid}`;
                 //API SEBA
-                //const endpoint = `/users/${idnumber}/revision/${submit.task.uuid}/tasks/submit`
+                //FALTA ESTE!
                 
                 
                 const  {data}  = await axios.get(endpoint, {   api: "revision",

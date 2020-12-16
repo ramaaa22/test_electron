@@ -114,7 +114,7 @@ export default {
                 const endpoint = `/clients/evaluation-tables/${evaluation_table_uuid}/evaluations/${evaluation_uuid}`;
 
                 //API SEBA
-                //const endpoint = ``
+                //FALTA!
 
             try {
                 await axios.delete(endpoint, {   api: "revision",
