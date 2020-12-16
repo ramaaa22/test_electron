@@ -22,8 +22,9 @@
                             <div>
                                 {{ announcement.name }}
                                 <span
-                                    v-if="announcement.title"
-                                >: {{ announcement.title }}</span>
+                                    v-if="announcement.title"> 
+                                    {{ announcement.title }}
+                                </span>
                             </div>
                         </template>
                     </el-table-column>
@@ -46,7 +47,7 @@ export default {
     async mounted() {
         try {
             this.loading = true;
-
+            //API SEBA OK!
             const { data } = await axios.get("/revisions", {
                 api: "revision",
                 oauth: true

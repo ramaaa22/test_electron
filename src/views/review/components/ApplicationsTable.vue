@@ -654,6 +654,7 @@ export default {
         try {
             const { data: provinces } = await axios.get('/places/provinces', {   api: "test",
                 oauth: true });
+
             /*const { data: evaluation_tables } = await axios.get(`/clients/announcements/${this.announcement_uuid}/evaluation-tables`, {
                   api: "revision",
                 oauth: true
@@ -770,6 +771,9 @@ export default {
                 this.$forceUpdate();
             
                 const endpoint = `/clients/announcements/${this.announcement_uuid}/applications${ page ? `?page=${page}` : '' }`;
+                //API SEBA
+                //FALTA!
+                
                 const { data } = await axios.get(endpoint, { 
                     params: await this.getQueryParams(),
                       api: "revision",
