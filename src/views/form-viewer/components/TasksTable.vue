@@ -64,10 +64,10 @@ export default {
     methods: {
            async openSubmit(submit, idnumber){
             try {
-                const endpoint = `/clients/tasks/${submit.task.uuid}/submits/${submit.uuid}`;
+                //const endpoint = `/clients/tasks/${submit.task.uuid}/submits/${submit.uuid}`;
                 
                 //API SEBA 
-                //FALTA
+                const endpoint = `/tasks/${submit.task.uuid}/submits/${submit.uuid}`
                 
                 const  {data}  = await axios.get(endpoint, {   api: "revision",
                 oauth: true });

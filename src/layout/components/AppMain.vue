@@ -1,9 +1,11 @@
 <template>
     <section class="app-main">
+        
         <transition name="fade-transform" mode="out-in">
             <router-view
 				:key="key"/>
         </transition>
+        
     </section>
 </template>
 
@@ -16,12 +18,24 @@ export default {
 	data: () =>({	
 		visible: false,
 		loading_drawer: false,	
-		application: []
+        application: [],
     }),
     
 	computed: {
 		key(){return this.$route.path}
     },
+    methods:{
+        openTab(service,tabs){
+            this.actual_service=service;
+            this.tabs=tabs;
+            console.log(this.actual_service);
+            console.log(this.tabs);
+        },
+        closeTab(service,tabs){
+            this.tabs=tabs;
+            console.log(this.tabs);
+        }
+    }
     
 }
 </script>

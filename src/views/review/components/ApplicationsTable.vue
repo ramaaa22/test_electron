@@ -770,9 +770,10 @@ export default {
                 this.loading = true;
                 this.$forceUpdate();
             
-                const endpoint = `/clients/announcements/${this.announcement_uuid}/applications${ page ? `?page=${page}` : '' }`;
+                //const endpoint = `/clients/announcements/${this.announcement_uuid}/applications${ page ? `?page=${page}` : '' }`;
+                
                 //API SEBA
-                //FALTA!
+                const enpoint= `/revisions/${this.announcement_uuid}/applications/${ page ? `?page=${page}` : '' }`;
                 
                 const { data } = await axios.get(endpoint, { 
                     params: await this.getQueryParams(),
@@ -829,9 +830,10 @@ export default {
 
                 this.loading = true;
 
-                const endpoint = `/clients/announcements/${this.announcement_uuid}/applications/${application_uuid}`;
+                //const endpoint = `/clients/announcements/${this.announcement_uuid}/applications/${application_uuid}`;
+                
                 //API SEBA
-                //const endpoint = `/revisions/${this.announcement_uuid}/applications/${application_uuid}`;
+                const endpoint = `/revisions/${this.announcement_uuid}/applications/${application_uuid}`;
 
                 const { data } = await axios.put(endpoint, { blocked: blocked ? 0 : 1 }, {   api: "revision",
                 oauth: true });
