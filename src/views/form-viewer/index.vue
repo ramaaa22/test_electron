@@ -83,9 +83,10 @@ export default {
     async mounted(){
         if(this.type === 'review'){
            try {
-            const endpoint = `/clients/users/${this.idnumber}/announcements/${this.uuid}/tasks/submits`;
+            //const endpoint = `/clients/users/${this.idnumber}/announcements/${this.uuid}/tasks/submits`;
+            
             //API SEBA
-            //const endpoint = `/users/${this.idnumber}/revision/${this.uuid}/tasks/submits`;
+            const endpoint = `/users/${this.idnumber}/revision/${this.uuid}/tasks/submits`;
             
             const  { data } = await axios.get(endpoint, {   api: "revision",
                 oauth: true });

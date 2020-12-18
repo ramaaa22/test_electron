@@ -87,10 +87,10 @@ export default {
         async retrieveEvaluations(emit_update) {
             try {
                 this.loading = true
-                const endpoint = `/clients/applications/${this.application_uuid}/evaluations`;
+                //const endpoint = `/clients/applications/${this.application_uuid}/evaluations`;
 
                 //API SEBA
-                //const endpoint = `applications/${this.application_uuid}/evaluations`;
+                const endpoint = `applications/${this.application_uuid}/evaluations`;
 
                 const  { data }  = await axios.get(endpoint, {   api: "revision",
                 oauth: true });

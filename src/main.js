@@ -12,6 +12,7 @@ import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/es';
 
 import '@/styles/index.scss'; // global css
+import "../node_modules/electron-tabs/electron-tabs.css";
 
 import App from './App';
 import store from './store';
