@@ -77,7 +77,7 @@ export default {
             const endpoint = `/revisions/${this.announcement_uuid}`;
             const { data } = await axios.get(endpoint, {   api: "revision",
             oauth: true });
-            const { name, columns, filters, types } = data.resource;
+            const { name, columns, filters, types } = data.resource.announcement;
             
             this.announcement = { name, columns, filters, types };
         } 

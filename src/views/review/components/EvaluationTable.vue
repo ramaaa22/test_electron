@@ -111,10 +111,10 @@ export default {
         async handleDelete(evaluation){
                 const evaluation_table_uuid = evaluation.evaluation_table.uuid
                 const evaluation_uuid = evaluation.uuid
-                const endpoint = `/clients/evaluation-tables/${evaluation_table_uuid}/evaluations/${evaluation_uuid}`;
+                //const endpoint = `/clients/evaluation-tables/${evaluation_table_uuid}/evaluations/${evaluation_uuid}`;
 
                 //API SEBA
-                //FALTA!
+                const endpoint = `/evaluation-tables/${evaluation_table_uuid}/evaluations/${evaluation_uuid}`;
 
             try {
                 await axios.delete(endpoint, {   api: "revision",
@@ -138,8 +138,8 @@ export default {
                         });
                         
                         await axios.delete(endpoint, { 
-                              api: "revision",
-                oauth: true, 
+                            api: "revision",
+                            oauth: true, 
                             data: {
                                 force: true
                             }
