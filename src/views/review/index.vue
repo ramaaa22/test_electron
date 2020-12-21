@@ -54,7 +54,6 @@ export default {
             });
 
             this.announcements = data.resources;
-            //this.announcements = data.resources.announcements?;
         } catch (error) {
             console.log(error);
         } finally {
