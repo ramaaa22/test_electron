@@ -21,6 +21,7 @@ export const routes = [
 		path: '/',
 		component: Layout,
 		redirect: { name: 'form-builder' },
+		hidden:true,
 		children: [
 			{
 				path: '/crear-formulario',
@@ -43,9 +44,10 @@ export const routes = [
 		redirect: {name: 'revision.announcements.list'},
 		children:[
 			{
-				path: '/convocatorias',
+				path: '/revision',
 				name: 'revision.announcements.list',
 				component: () => import('@/views/review/index'),
+				hidden:true,
 				meta: { 
 					require_auth: true,
 					title: 'Revision',
@@ -53,7 +55,7 @@ export const routes = [
 				},
 			},
 			{
-				path: '/convocatorias/:uuid', 
+				path: '/revision/:uuid', 
 				name: 'revision.announcements.single',
 				hidden:true,
 				component: () => import('@/views/review/_uuid'),
@@ -69,6 +71,7 @@ export const routes = [
 	{
 		path: '/tasks',
 		component: Layout,
+		hidden: true,
 		children: [
 			{
 				path: '/tasks',

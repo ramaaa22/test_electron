@@ -113,12 +113,12 @@ export default {
                         uuid: this.announcement_uuid,
                         parent: {
                             name: 'Revision',
-                            path: '/convocatorias',
+                            path: '/revision',
                             redirect: true,
                             child:{
                                 name: this.announcement_name,
                                 route_name: 'revision.announcements.single',
-                                path: `/convocatorias/${this.announcement_uuid}`,
+                                path: `/revision/${this.announcement_uuid}`,
                                 uuid: this.announcement_uuid
                             }
                         },
