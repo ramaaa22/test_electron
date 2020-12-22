@@ -1,11 +1,6 @@
 <template>
     <el-main class="mt-8">
-        <div class="etabs-tabgroup">
-            <div class="etabs-tabs"></div>
-            <div class="etabs-buttons"></div>
-        </div>
-        <div class="etabs-views"></div>
-
+      
         <el-row type="flex" justify="center" class="mt-6">
             <el-col :span="6" >
                 <el-avatar
@@ -68,23 +63,11 @@
 <script>
 
 import axios from "@/utils/request";
-const TabGroup = require("electron-tabs");
 
 export default {
     mounted(){
 
-        this.tab_group = new TabGroup();
-        let tab = this.tab_group.addTab({
-            title: "FNA",
-            src: "http://electron.atom.io",
-            visible: true
-        });
-        tab = this.tab_group.addTab({
-            title: "Google",
-            src: "http://www.google.com.ar",
-            visible: true
-        });
-
+     
         let { firstname, lastname, idnumber, email,uuid } = this.$store.getters.user;
         this.user = { firstname, lastname, idnumber, email,uuid };
         this.user_edited = { firstname, lastname, idnumber, email,uuid };
@@ -93,7 +76,6 @@ export default {
     },
     data:()=>(
         {
-            tab_group,
             user:{
                 firstname:'',
                 lastname:'',

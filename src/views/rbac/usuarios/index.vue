@@ -62,8 +62,16 @@
         },
         methods: {
             userOpenPermissions(row) {
+                const tab_title =`Permisos de ${row.firstname} ${row.lastname}`;
                 const name = `user-${row.uuid}`;
-                const tab = this.tabs.items.find((tab) => tab.name === name);
+                const props={
+                    name,
+                    title:tab_title,
+                    row,
+                    component:"user-permissions"
+                };
+                this.$emit('open-tab', props);
+                /*const tab = this.tabs.items.find((tab) => tab.name === name);
                 if (!tab)
                     this.tabs.items.push({
                         name,
@@ -71,7 +79,7 @@
                         component: "user-permissions",
                         props: { row },
                     });
-                this.tabs.active = name;
+                this.tabs.active = name;*/
             },
             async retrieveUsers() {
                 try {

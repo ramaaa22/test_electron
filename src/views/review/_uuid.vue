@@ -96,9 +96,7 @@ export default {
                 const endpoint= `/revisions/${this.announcement_uuid}/applications/${application_uuid}`;
                 
                 const { data } = await axios.get(endpoint, {   api: "revision",
-                oauth: true });
-                
-
+                    oauth: true });
                 const steps = data.resource.form
                 const idnumber = data.resource.idnumber
                 const name =  `application-${idnumber}`;
@@ -122,7 +120,6 @@ export default {
                                 uuid: this.announcement_uuid
                             }
                         },
-                       
                     }
                 })
                 /*const tab = this.tabs.items.find(tab => (tab.name === name));

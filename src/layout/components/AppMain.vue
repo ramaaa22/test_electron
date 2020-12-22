@@ -3,6 +3,7 @@
         
         <transition name="fade-transform" mode="out-in">
             <router-view
+                @open-tab="openTab"
 				:key="key"/>
         </transition>
         
@@ -19,24 +20,31 @@ export default {
 		visible: false,
 		loading_drawer: false,	
         application: [],
+        tabs:{
+            active:'',
+            items:[]
+        }
     }),
+    methods:{
+        openTab(props){
+            const tab = this.tabs.items.find((tab) => tab.name === props.name);
+            if (!tab){
+                const {name,title,component,row} = props;
+                this.tabs.items.push({
+                    name,
+                    title,
+                    component,
+                    row,
+                });
+            }
+            this.tabs.active = name;
+        }
+    },
     
 	computed: {
 		key(){return this.$route.path}
     },
-    methods:{
-        openTab(service,tabs){
-            this.actual_service=service;
-            this.tabs=tabs;
-            console.log(this.actual_service);
-            console.log(this.tabs);
-        },
-        closeTab(service,tabs){
-            this.tabs=tabs;
-            console.log(this.tabs);
-        }
-    }
-    
+   
 }
 </script>
 
