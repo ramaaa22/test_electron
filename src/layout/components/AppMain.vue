@@ -32,9 +32,11 @@ export default {
     }),
     methods:{
         openTab(props){
+            console.log('recibo el emit');
             const tab = this.tabs.items.find((tab) => tab.name === props.name);
+            const {name,title,component,row} = props;
             if (!tab){
-                const {name,title,component,row} = props;
+                
                 this.tabs.items.push({
                     name,
                     title,

@@ -1,6 +1,10 @@
 <template>
     <div>
-        <h1 v-for="access in user.accesses" :key="`access-${access.service.slug}`">{{access.service.slug}}</h1>
+        <div v-for="access in user.accesses" :key="`access-${access.service.slug}`">
+            <h1>{{access.service.slug}}</h1>
+            <button @click="open(access.service)"
+                >Ir a {{access.service.slug}} </button>
+        </div>
     </div>
 </template>
 
@@ -14,6 +18,17 @@ export default {
 
     mounted(){
         console.log(this.user)
+    },
+    methods:{
+        open(service){
+            const props={
+                name:service.slug,
+                title:service.slug,
+                component:service.slug,
+                row:service.slug
+            }
+            this.$emit('open-tab',props);
+        }
     }
 }
 </script>
