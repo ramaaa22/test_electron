@@ -1,16 +1,23 @@
 <template>
     <section class="app-main">
-        
-        <transition name="fade-transform" mode="out-in">
-            <router-view
-				:key="key"/>
-        </transition>
-        
+        <el-tabs
+            type="border-card" 
+            v-model="tabs.active"
+            >
+            <el-tab-pane 
+                name="hola"
+                label="Inscripciones"
+                :closable="false">
+                <indexmaintab/>
+            </el-tab-pane>
+        </el-tabs>
     </section>
 </template>
 
 <script>
 import axios from "@/utils/request";
+import indexmaintab from '@/views/main-tab/index';
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'AppMain',
@@ -19,12 +26,18 @@ export default {
 		visible: false,
 		loading_drawer: false,	
         application: [],
+        tabs: {
+            active: 'hola'
+        }
     }),
     
 	computed: {
-		key(){return this.$route.path}
+        key(){return this.$route.path},
     },
-   
+    
+    components:{
+        indexmaintab
+    }
 }
 </script>
 
