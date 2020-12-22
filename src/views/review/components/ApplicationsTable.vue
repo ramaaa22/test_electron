@@ -662,7 +662,7 @@ export default {
 
             //API SEBA
             const { data: evaluation_tables } = await axios.get(`/revisions/${this.announcement_uuid}/evaluation-tables`, {
-                  api: "revision",
+                api: "revision",
                 oauth: true
             });
 

@@ -112,8 +112,8 @@
                         access.scopes_choose = this.splitAccesses(access.scopes);
 
                         const { data } = await axios.get(`/services/${access.service.name}`, {
-                        api: "users",
-                        oauth: true,
+                            api: "users",
+                            oauth: true,
                         });
                     
                         if(data.resource.url !== null){
@@ -214,8 +214,8 @@
                 if(scope.length === 0){
                     try {
                         const { data } = await axios.delete(`/accesses/${uuid}`, {
-                        api: "users",
-                        oauth: true,
+                            api: "users",
+                            oauth: true,
                         });
 
                         await this.retrieveAccesses();

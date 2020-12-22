@@ -1,16 +1,12 @@
 <template>
     <section class="app-main">
-        <el-tabs
-            type="border-card" 
-            v-model="tabs.active"
-            >
-            <el-tab-pane 
-                name="hola"
-                label="Inscripciones"
-                :closable="false">
-                <indexmaintab/>
-            </el-tab-pane>
-        </el-tabs>
+        
+        <transition name="fade-transform" mode="out-in">
+            <router-view
+                @open-tab="openTab"
+				:key="key"/>
+        </transition>
+        
     </section>
 </template>
 
@@ -26,10 +22,26 @@ export default {
 		visible: false,
 		loading_drawer: false,	
         application: [],
-        tabs: {
-            active: 'hola'
+        tabs:{
+            active:'',
+            items:[]
         }
     }),
+    methods:{
+        openTab(props){
+            const tab = this.tabs.items.find((tab) => tab.name === props.name);
+            if (!tab){
+                const {name,title,component,row} = props;
+                this.tabs.items.push({
+                    name,
+                    title,
+                    component,
+                    row,
+                });
+            }
+            this.tabs.active = name;
+        }
+    },
     
 	computed: {
         key(){return this.$route.path},
