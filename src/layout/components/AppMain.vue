@@ -4,8 +4,22 @@
         <transition name="fade-transform" mode="out-in">
             <el-tabs               
                 v-model="tabs.active">
-                    <el-tab-pane name="hola">
+                    <el-tab-pane name="hola" label="hola">
                         <indexmaintab @open-tab="openTab"/>
+                    </el-tab-pane>
+
+                    <el-tab-pane
+                        v-for="item in tabs.items"
+                        :key="`tab-${item.name}`"
+                        :label="item.title"
+                        :name="item.name"
+                        :closable="true">
+                            <component 
+                                :is="item.component"
+                                v-bind="item.props"
+                                :name="item.name"
+                                @open-tab="openTab"
+                                />
                     </el-tab-pane>
             </el-tabs>
         </transition>
@@ -16,6 +30,8 @@
 <script>
 import axios from "@/utils/request";
 import indexmaintab from '@/views/main-tab/index';
+import revision from '@/views/review/index';
+import reviewsingle from '@/views/review/_uuid';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -38,10 +54,10 @@ export default {
             if (!tab){
                 
                 this.tabs.items.push({
-                    name,
-                    title,
-                    component,
-                    row,
+                    name: name,
+                    title: title,
+                    component: component,
+                    props: {row},
                 });
             }
             this.tabs.active = name;
@@ -53,7 +69,9 @@ export default {
     },
     
     components:{
-        indexmaintab
+        indexmaintab,
+        revision,
+        reviewsingle
     }
 }
 </script>

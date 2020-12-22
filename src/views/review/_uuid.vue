@@ -64,9 +64,7 @@ export default {
         announcement_uuid () {
             return this.$route.params.uuid;
         },
-        announcement_name () {
-            return this.$route.params.title;
-        }
+       
     },
    
     async created(){

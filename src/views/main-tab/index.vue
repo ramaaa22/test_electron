@@ -15,10 +15,6 @@ export default {
     computed: {
         ...mapGetters(['user'])
     },
-
-    mounted(){
-        console.log(this.user)
-    },
     methods:{
         open(service){
             const props={

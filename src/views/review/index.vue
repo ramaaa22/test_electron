@@ -62,14 +62,15 @@ export default {
     },
     methods: {
         openAnnouncement(announcement) {
-            this.$router.push({
-				name: 'revision.announcements.single',
-				params: {
-                    uuid: announcement.uuid,
-                    title: announcement.name,
-                    name: announcement.title
-				}
-			})
+             const props = {
+                title: announcement.title,
+                name: announcement.title,
+                component: 'reviewsingle',
+                row: announcement.uuid,
+            }
+
+            this.$emit('open-tab', props);
+           
         },
     },
 };
