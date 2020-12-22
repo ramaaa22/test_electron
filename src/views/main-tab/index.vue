@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>hola</h1>
+        <h1 v-for="access in user.accesses" :key="`access-${access.service.slug}`">{{access.service.slug}}</h1>
     </div>
 </template>
 

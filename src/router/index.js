@@ -115,7 +115,7 @@ export const routes = [
 			{
 				path:'/servicios',
 				name: 'servicios',
-				component: () => import('@/views/rbac/services/index'),
+				component: () => import('@/views/rbac/servicios/index'),
 				meta:{
 					title: 'Servicios'
 				}

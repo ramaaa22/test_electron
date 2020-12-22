@@ -1,10 +1,13 @@
 <template>
     <section class="app-main">
-        
+ 
         <transition name="fade-transform" mode="out-in">
-            <router-view
-                @open-tab="openTab"
-				:key="key"/>
+            <el-tabs               
+                v-model="tabs.active">
+                    <el-tab-pane name="hola">
+                        <indexmaintab @open-tab="openTab"/>
+                    </el-tab-pane>
+            </el-tabs>
         </transition>
         
     </section>
@@ -23,7 +26,7 @@ export default {
 		loading_drawer: false,	
         application: [],
         tabs:{
-            active:'',
+            active:'hola',
             items:[]
         }
     }),
