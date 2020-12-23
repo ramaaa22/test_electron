@@ -773,7 +773,7 @@ export default {
                 //const endpoint = `/clients/announcements/${this.announcement_uuid}/applications${ page ? `?page=${page}` : '' }`;
                 
                 //API SEBA
-                const enpoint= `/revisions/${this.announcement_uuid}/applications/${ page ? `?page=${page}` : '' }`;
+                const endpoint= `/revisions/${this.announcement_uuid}/applications/${ page ? `?page=${page}` : '' }`;
                 
                 const { data } = await axios.get(endpoint, { 
                     params: await this.getQueryParams(),

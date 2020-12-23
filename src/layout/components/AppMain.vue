@@ -48,7 +48,7 @@ export default {
 		loading_drawer: false,	
         application: [],
         tabs:{
-            active:'hola',
+            active:'principal',
             items:[]
         }
     }),
@@ -63,7 +63,7 @@ export default {
                     name: name,
                     title: title,
                     component: component,
-                    props:  prop,
+                    props:  {prop},
                 });
             }
             this.tabs.active = name;

@@ -20,7 +20,7 @@
                     :filters="announcement.filters"
                     :types="announcement.types"
                     :tabs="tabs.items"
-                    :announcement_uuid="announcement_uuid"
+                    :announcement_uuid="prop"
                     :update="update_applications" />
             </el-tab-pane>
             
@@ -56,15 +56,20 @@ export default {
             active: 'applications',
             items: []
         },
+       
         announcement: false,
         update_applications: false
     }),
 
+    props: ['prop'],
+
     computed: {
-        announcement_uuid () {
-            return this.$route.params.uuid;
-        },
-       
+          announcement_uuid(){
+              return this.prop
+          },
+        announcement_name () {
+            return this.$route.params.title;
+        }
     },
    
     async created(){
