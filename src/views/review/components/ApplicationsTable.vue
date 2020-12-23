@@ -773,12 +773,12 @@ export default {
                 //const endpoint = `/clients/announcements/${this.announcement_uuid}/applications${ page ? `?page=${page}` : '' }`;
                 
                 //API SEBA
-                const endpoint= `/revisions/${this.announcement_uuid}/applications/${ page ? `?page=${page}` : '' }`;
-                
-                const { data } = await axios.get(endpoint, { 
+                const endpoint= `/revisions/${this.announcement_uuid}/applications`;
+
+                const { data } = await axios.get( endpoint, { 
                     params: await this.getQueryParams(),
-                      api: "revision",
-                oauth: true 
+                    api: "revision",
+                    oauth: true 
                 });
 
                 this.applications = data.resources;
