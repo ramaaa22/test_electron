@@ -48,16 +48,16 @@ export default {
     }),
     methods:{
         openTab(props){
-            console.log('recibo el emit');
             const tab = this.tabs.items.find((tab) => tab.name === props.name);
-            const {name,title,component,row} = props;
+            const { name, title, component, prop} = props;
+
             if (!tab){
                 
                 this.tabs.items.push({
                     name: name,
                     title: title,
                     component: component,
-                    props: {row},
+                    props:  prop,
                 });
             }
             this.tabs.active = name;

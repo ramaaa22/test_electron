@@ -66,7 +66,7 @@ export default {
                 title: announcement.title,
                 name: announcement.title,
                 component: 'reviewsingle',
-                row: announcement.uuid,
+                prop: announcement.uuid,
             }
 
             this.$emit('open-tab', props);
