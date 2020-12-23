@@ -3,8 +3,9 @@
  
         <transition name="fade-transform" mode="out-in">
             <el-tabs               
-                v-model="tabs.active">
-                    <el-tab-pane name="hola" label="hola">
+                v-model="tabs.active"
+                @tab-remove="removeTab">
+                    <el-tab-pane name="principal" label="Principal">
                         <indexmaintab @open-tab="openTab"/>
                     </el-tab-pane>
 
@@ -31,8 +32,13 @@
 import axios from "@/utils/request";
 import indexmaintab from '@/views/main-tab/index';
 import revision from '@/views/review/index';
+import rbac from '@/views/rbac/usuarios/index';
+//import rbac from '@/views/rbac/servicios/index';
+import user_permissions from '@/views/rbac/usuarios/components/UserPermissions';
 import reviewsingle from '@/views/review/_uuid';
 import { mapGetters } from 'vuex';
+
+
 
 export default {
     name: 'AppMain',
@@ -61,7 +67,13 @@ export default {
                 });
             }
             this.tabs.active = name;
-        }
+        },
+        removeTab(target_name) {
+            const tabs = this.tabs.items;
+            const active_name = this.tabs.active;
+            if (active_name === target_name) this.tabs.active = "principal";
+            this.tabs.items = tabs.filter((tab) => tab.name !== target_name);
+        },
     },
     
 	computed: {
@@ -71,7 +83,9 @@ export default {
     components:{
         indexmaintab,
         revision,
-        reviewsingle
+        reviewsingle,
+        rbac,
+        user_permissions
     }
 }
 </script>

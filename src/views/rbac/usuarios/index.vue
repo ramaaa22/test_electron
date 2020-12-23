@@ -68,7 +68,7 @@
                     name,
                     title:tab_title,
                     row,
-                    component:"user-permissions"
+                    component:"user_permissions"
                 };
                 this.$emit('open-tab', props);
                 /*const tab = this.tabs.items.find((tab) => tab.name === name);
