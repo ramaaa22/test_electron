@@ -4,6 +4,7 @@
         <transition name="fade-transform" mode="out-in">
             <el-tabs               
                 v-model="tabs.active"
+                type="border-card"
                 @tab-remove="removeTab">
                     <el-tab-pane name="principal" label="Principal">
                         <indexmaintab @open-tab="openTab"/>
@@ -36,6 +37,7 @@ import rbac from '@/views/rbac/usuarios/index';
 //import rbac from '@/views/rbac/servicios/index';
 import user_permissions from '@/views/rbac/usuarios/components/UserPermissions';
 import reviewsingle from '@/views/review/_uuid';
+import evaluation_table from '@/views/review/components/EvaluationTable';
 import { mapGetters } from 'vuex';
 
 
@@ -54,6 +56,8 @@ export default {
     }),
     methods:{
         openTab(props){
+            console.log('entro a open tab');
+            console.log(props);
             const tab = this.tabs.items.find((tab) => tab.name === props.name);
             const { name, title, component, prop} = props;
 
@@ -85,7 +89,8 @@ export default {
         revision,
         reviewsingle,
         rbac,
-        user_permissions
+        user_permissions,
+        evaluation_table
     }
 }
 </script>

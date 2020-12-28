@@ -144,9 +144,8 @@ export default {
 
         async openEvaluations(application_uuid, idnumber){
             try {
-                const name = `evaluation-${idnumber}`
+                /*const name = `evaluation-${idnumber}`
                 const tab = this.tabs.items.find(tab => (tab.name === name));
-           
                 if (!tab)
                     this.tabs.items.push({
                         name,
@@ -155,7 +154,16 @@ export default {
                         props: { application_uuid }
                     });
 
-                this.tabs.active = name
+                this.tabs.active = name;*/
+
+                const props={
+                    name:`evaluation-${idnumber}`,
+                    title:`Evaluación de ${idnumber}`,
+                    component:'evaluation_table',
+                    props:{application_uuid}
+                }
+                this.$emit('open-tab',props);
+
             } 
             catch (error) {
                 console.log(error)
