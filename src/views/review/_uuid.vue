@@ -155,6 +155,7 @@ export default {
                     });
 
                 this.tabs.active = name;*/
+                
 
                 const props={
                     name:`evaluation-${idnumber}`,
