@@ -10,6 +10,7 @@
                         <indexmaintab @open-tab="openTab"/>
                     </el-tab-pane>
 
+
                     <el-tab-pane
                         v-for="item in tabs.items"
                         :key="`tab-${item.name}`"
