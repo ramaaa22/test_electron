@@ -74,9 +74,15 @@ export default {
             this.tabs.active = name;
         },
         removeTab(target_name) {
-            const tabs = this.tabs.items;
+            let tabs = this.tabs.items;
             const active_name = this.tabs.active;
-            if (active_name === target_name) this.tabs.active = "principal";
+            let tabs_names = tabs.map(tab=>tab.name);
+            console.log(tabs_names);
+            if (active_name === target_name){
+                let pos =tabs_names.indexOf(target_name)-1;
+                if (pos>-1) this.tabs.active = tabs[pos].name; 
+                else this.tabs.active = 'principal'; 
+            }
             this.tabs.items = tabs.filter((tab) => tab.name !== target_name);
         },
     },
