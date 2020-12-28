@@ -65,7 +65,7 @@ export default {
 
     computed: {
           announcement_uuid(){
-              return this.prop
+              return this.prop;
           },
         announcement_name () {
             return this.$route.params.title;
@@ -104,7 +104,7 @@ export default {
                 const idnumber = data.resource.idnumber
                 const name =  `application-${idnumber}`;
 
-                this.$router.push({
+                /*this.$router.push({
                     name: 'form-viewer-index',
                     params: {
                         id: application_uuid,
@@ -125,7 +125,7 @@ export default {
                         },
                     }
                 })
-                /*const tab = this.tabs.items.find(tab => (tab.name === name));
+                const tab = this.tabs.items.find(tab => (tab.name === name));
 
                 if (!tab)
                     this.tabs.items.push({
@@ -136,6 +136,15 @@ export default {
                     });
 
                 this.tabs.active = name*/
+
+                const props={
+                    name:`application-${idnumber}`,
+                    title:`Inscripción de ${idnumber}`,
+                    component:'application_render',
+                    prop:{steps,idnumber,name}
+                };
+                this.$emit('open-tab',props);
+
             } 
             catch (error) {
                 console.log(error)
@@ -160,7 +169,7 @@ export default {
                     name:`evaluation-${idnumber}`,
                     title:`Evaluación de ${idnumber}`,
                     component:'evaluation_table',
-                    props:{application_uuid}
+                    prop:{application_uuid}
                 }
                 this.$emit('open-tab',props);
 
@@ -172,7 +181,7 @@ export default {
 
         async openTasks(application_uuid, idnumber){
             try {
-                const name = `tasks-${idnumber}`
+                /*const name = `tasks-${idnumber}`
                 const tab = this.tabs.items.find(tab => (tab.name === name));
            
                 if (!tab)
@@ -186,7 +195,16 @@ export default {
                         }
                     });
 
-                this.tabs.active = name
+                this.tabs.active = name*/
+
+                const props={
+                    name:`tasks-${idnumber}`,
+                    title:`Tareas de ${idnumber}`,
+                    component:'tasks_table',
+                    prop:{application_uuid,idnumber}
+                }
+                this.$emit('open-tab',props);
+
             } 
             catch (error) {
                 console.log(error)

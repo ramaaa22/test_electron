@@ -76,12 +76,20 @@ export default {
         loading: true
     }),
 
-    props:{
+    /*props:{
         application_uuid: String
-    },
+    },*/
+
+    props: ['prop'],
 
     async mounted(){
         await this.retrieveEvaluations();
+    },
+
+    computed:{
+        application_uuid(){
+            return this.prop.application_uuid;
+        }
     },
     methods: {
         async retrieveEvaluations(emit_update) {

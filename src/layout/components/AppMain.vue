@@ -39,6 +39,8 @@ import rbac from '@/views/rbac/usuarios/index';
 import user_permissions from '@/views/rbac/usuarios/components/UserPermissions';
 import reviewsingle from '@/views/review/_uuid';
 import evaluation_table from '@/views/review/components/EvaluationTable';
+import tasks_table from '@/views/review/components/TasksTable';
+import application_render from '@/views/review/components/ApplicationRender'
 import { mapGetters } from 'vuex';
 
 
@@ -58,17 +60,15 @@ export default {
     methods:{
         openTab(props){
             console.log('entro a open tab');
-            console.log(props);
             const tab = this.tabs.items.find((tab) => tab.name === props.name);
             const { name, title, component, prop} = props;
-
+            console.log({name,title,component,prop});
             if (!tab){
-                
                 this.tabs.items.push({
                     name: name,
                     title: title,
                     component: component,
-                    props:  {prop},
+                    props: {prop},
                 });
             }
             this.tabs.active = name;
@@ -91,7 +91,9 @@ export default {
         reviewsingle,
         rbac,
         user_permissions,
-        evaluation_table
+        evaluation_table,
+        tasks_table,
+        application_render
     }
 }
 </script>

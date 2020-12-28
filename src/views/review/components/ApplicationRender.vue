@@ -112,14 +112,28 @@ import 'jspdf-autotable';
 
 
 export default {
-    props: {
+    /*props: {
         steps: Array,
         loading: {
             type: Boolean,
             default: false
         },
         name: String,
-        idnumber: String
+        idnumber: String,
+        
+    },*/
+    props:['prop'],
+    computed:{
+        steps(){
+            return this.prop.steps;
+        },
+        name(){
+            return this.prop.name;
+        },
+        idnumber(){
+            return this.prop.idnumber;
+        }
+
     },
 
     data: () => ({

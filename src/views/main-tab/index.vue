@@ -37,7 +37,7 @@ export default {
                 name:service.slug,
                 title:this.capitalize(service.slug),
                 component:service.slug,
-                row:service.slug
+                prop:service.slug
             }
             this.$emit('open-tab',props);
         },
