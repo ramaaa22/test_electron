@@ -50,8 +50,8 @@
 import ApplicationRender from '@/views/form-viewer/components/ApplicationRender';
 import DownloadPdf from '@/views/form-viewer/components/DownloadPdf';
 import TasksTable from '@/views/form-viewer/components/TasksTable';
+import EvaluationTable from '@/views/form-viewer/components/EvaluationTable';
 import axios from '@/utils/request';
-import EvaluationTable from '@/views/review/components/EvaluationTable';
 
 export default {
 

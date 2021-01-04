@@ -42,12 +42,7 @@
 </el-main>
 </template>
 <script>
-import app from '@/store/modules/app'
 import ApplicationsTable from '@/views/review/components/ApplicationsTable'
-import ApplicationRender from '@/views/review/components/ApplicationRender'
-import EvaluationTable from '@/views/review/components/EvaluationTable'
-import TasksTable from '@/views/review/components/TasksTable'
-//import Download from '@/views/tasks/components/Download'
 import axios from '@/utils/request';
 
 export default {
