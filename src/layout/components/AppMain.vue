@@ -10,7 +10,6 @@
                         <indexmaintab @open-tab="openTab"/>
                     </el-tab-pane>
 
-
                     <el-tab-pane
                         v-for="item in tabs.items"
                         :key="`tab-${item.name}`"
@@ -59,7 +58,6 @@ export default {
     }),
     methods:{
         openTab(props){
-            console.log('entro a open tab');
             const tab = this.tabs.items.find((tab) => tab.name === props.name);
             const { name, title, component, prop} = props;
             console.log({name,title,component,prop});
@@ -85,10 +83,6 @@ export default {
             }
             this.tabs.items = tabs.filter((tab) => tab.name !== target_name);
         },
-    },
-    
-	computed: {
-        key(){return this.$route.path},
     },
     
     components:{

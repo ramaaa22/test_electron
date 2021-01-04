@@ -65,15 +65,6 @@
 import axios from "@/utils/request";
 
 export default {
-    mounted(){
-
-     
-        let { firstname, lastname, idnumber, email,uuid } = this.$store.getters.user;
-        this.user = { firstname, lastname, idnumber, email,uuid };
-        this.user_edited = { firstname, lastname, idnumber, email,uuid };
-        //this.user= this.$store.getters.user
-        //console.log(name);
-    },
     data:()=>(
         {
             user:{
@@ -83,64 +74,17 @@ export default {
                 email:'',
                 uuid:'',
             },
-            user_edited:{
-                firstname:'',
-                lastname:'',
-                idnumber:'',
-                email:'',
-                uuid:'',
-            },
-            user_data:{},
             user_img:'https://scontent.faep9-1.fna.fbcdn.net/v/t1.0-9/91175839_10222737247878714_1917986438519980032_o.jpg?_nc_cat=109&ccb=2&_nc_sid=09cbfe&_nc_ohc=8gtVlg9osswAX-sDWTh&_nc_ht=scontent.faep9-1.fna&oh=ff2a841f2a4654678867eeb1e029ed34&oe=5FE47FFA',
             edit:false,
             label_position:'top'
         }
     ),
-    methods:{
-        userEdited(){
-            if (this.user.idnumber !== this.user_edited.idnumber) {
-                this.user_data["idnumber"] = this.user.idnumber;
-            } 
-            else {
-                delete this.user_data["idnumber"];
-            }
-            if (this.user.email !== this.user_edited.email) {
-                this.user_data["email"] = this.user.email;
-            } 
-            else{
-                delete this.user_data["email"];
-            }
-            this.user_data["firstname"] = this.user.firstname;
-            this.user_data["lastname"] = this.user.lastname;
-        },
 
-        async editUserInformation() {
-            //this.loading = true;
-            this.userEdited();
-            try {
-                const { data } = await axios.put(`/users/${this.user.uuid}`, this.user_data, {
-                    api: "users",
-                    oauth: true,
-                });
-
-                this.$emit("actualize-user-edit", this.user.uuid);
-            } 
-            catch (error) {
-                console.log(error);
-            } 
-            finally {
-                //this.loading = false;
-                console.log('entro aca');
-                let {firstname,lastname,email,idnumber,uuid}= this.user
-                this.user_edited={firstname,lastname,email,idnumber,uuid};
-                this.edit = false;
-            }
-        }
+    mounted(){
+        let { firstname, lastname, idnumber, email, uuid } = this.$store.getters.user;
+        this.user = { firstname, lastname, idnumber, email, uuid };
     },
-    computed:{
-        
-    }
-    
+
 }
 </script>
 
