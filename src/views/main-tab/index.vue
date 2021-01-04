@@ -3,7 +3,8 @@
         <el-row type="flex" justify="center" class="mt-6">
             <el-col :span="6" v-for="access in user.accesses" :key="`access-${access.service.slug}`">
                 <el-card :body-style="{ padding: '0px' }">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3_-4JiiNDczxYLobIOM9_oAn2S4z5w-cU_Q&usqp=CAU" class="image">
+                    <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3_-4JiiNDczxYLobIOM9_oAn2S4z5w-cU_Q&usqp=CAU" class="image"> -->
+                    <img :src="require(`../../../public/images/${access.service.slug}.png`)" class="image">
                     <div style="padding: 14px;">
                         <span>{{access.service.slug}}</span>
                         <div class="bottom clearfix">

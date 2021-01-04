@@ -8,7 +8,7 @@
                     :type="type"/>
             </el-col>
 
-            <div class="text-right mb-2 pt-2 pr-5 actions">
+            <!-- <div class="text-right mb-2 pt-2 pr-5 actions">
                 <el-tooltip
                     effect="dark"
                     content="Evaluaciones"
@@ -26,7 +26,7 @@
                             </el-button>
                     </el-badge>
                 </el-tooltip>
-            </div>
+            </div> -->
 
         </el-row>
         <application-render :steps="steps"/>
@@ -50,14 +50,13 @@
 import ApplicationRender from '@/views/form-viewer/components/ApplicationRender';
 import DownloadPdf from '@/views/form-viewer/components/DownloadPdf';
 import TasksTable from '@/views/form-viewer/components/TasksTable';
-import EvaluationTable from '@/views/form-viewer/components/EvaluationTable';
 import axios from '@/utils/request';
 
 export default {
 
     data: () =>({
         total_tasks: [],
-        dialog_visible:false,
+        
     }),
 
     props:['prop'],
@@ -74,11 +73,7 @@ export default {
         }
     },
 
-    methods:{
-        openEvaluation(){
-            this.dialog_visible = true;
-        }
-    },
+    
 
     async mounted(){
         if(this.type === 'review'){
@@ -103,7 +98,7 @@ export default {
         ApplicationRender,
         DownloadPdf,
         TasksTable,
-        EvaluationTable
+        
     },
 }
 </script>

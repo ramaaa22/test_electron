@@ -41,7 +41,7 @@
                 const props={
                     name,
                     title:tab_title,
-                    row,
+                    prop:row,
                     component:"user_permissions"
                 };
                 this.$emit('open-tab', props);
