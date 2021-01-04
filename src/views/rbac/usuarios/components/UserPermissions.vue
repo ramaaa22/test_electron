@@ -72,10 +72,15 @@
             accesses:[],
         }),
 
-        props: {
+        /*props: {
             row: Object,
+        },*/
+        props: ['prop'],
+        computed:{
+            row(){
+                return this.prop;
+            }
         },
-
         async mounted() {
             this.loading = true;
             await this.retrieveServices();
