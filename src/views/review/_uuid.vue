@@ -3,15 +3,6 @@
     <div 
         id="tabs-container"
         class="app-container">
-        <el-tabs 
-            type="border-card" 
-            v-model="tabs.active"
-            @tab-remove="removeTab">
-            <el-tab-pane 
-     
-                name="applications"
-                label="Inscripciones"
-                :closable="false">
                 <applications-table
                     @open-application="openApplication"
                     @open-evaluations="openEvaluations"
@@ -22,32 +13,11 @@
                     :tabs="tabs.items"
                     :announcement_uuid="prop"
                     :update="update_applications" />
-            </el-tab-pane>
-            
-            <el-tab-pane
-                v-for="item in tabs.items"
-                :key="`tab-${item.name}`"
-                :label="item.title"
-                :name="item.name"
-                :closable="true">
-                <component 
-                    :is="item.component"
-                    v-bind="item.props"
-                    :name="announcement.name"
-                    @update-applications="update_applications = true"
-                    @open-tasks="openSubmit" />
-            </el-tab-pane>
-        </el-tabs>
     </div>
 </el-main>
 </template>
 <script>
-import app from '@/store/modules/app'
 import ApplicationsTable from '@/views/review/components/ApplicationsTable'
-import ApplicationRender from '@/views/review/components/ApplicationRender'
-import EvaluationTable from '@/views/review/components/EvaluationTable'
-import TasksTable from '@/views/review/components/TasksTable'
-//import Download from '@/views/tasks/components/Download'
 import axios from '@/utils/request';
 
 export default {
@@ -185,10 +155,7 @@ export default {
     },
 
     components:{
-        ApplicationsTable,
-        ApplicationRender,
-        EvaluationTable,
-        TasksTable
+        ApplicationsTable
     }
 }
 </script>
