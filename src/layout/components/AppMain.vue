@@ -34,12 +34,11 @@ import axios from "@/utils/request";
 import indexmaintab from '@/views/main-tab/index';
 import revision from '@/views/review/index';
 import rbac from '@/views/rbac/usuarios/index';
-//import rbac from '@/views/rbac/servicios/index';
 import user_permissions from '@/views/rbac/usuarios/components/UserPermissions';
 import reviewsingle from '@/views/review/_uuid';
 import evaluation_table from '@/views/review/components/EvaluationTable';
 import tasks_table from '@/views/review/components/TasksTable';
-import application_render from '@/views/review/components/ApplicationRender'
+import form_viewer from '@/views/form-viewer/index';
 import { mapGetters } from 'vuex';
 
 
@@ -60,7 +59,7 @@ export default {
         openTab(props){
             const tab = this.tabs.items.find((tab) => tab.name === props.name);
             const { name, title, component, prop} = props;
-            console.log({name,title,component,prop});
+
             if (!tab){
                 this.tabs.items.push({
                     name: name,
@@ -71,6 +70,7 @@ export default {
             }
             this.tabs.active = name;
         },
+
         removeTab(target_name) {
             let tabs = this.tabs.items;
             const active_name = this.tabs.active;
@@ -93,7 +93,7 @@ export default {
         user_permissions,
         evaluation_table,
         tasks_table,
-        application_render
+        form_viewer
     }
 }
 </script>

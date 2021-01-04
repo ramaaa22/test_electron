@@ -74,9 +74,6 @@ export default {
    
     async created(){
         try {
-            //const endpoint = `/clients/announcements/${this.announcement_uuid}`;
-            
-            //API SEBA
             const endpoint = `/revisions/${this.announcement_uuid}`;
             const { data } = await axios.get(endpoint, {   api: "revision",
             oauth: true });
@@ -93,9 +90,6 @@ export default {
     methods:{
         async openApplication(application_uuid){
             try {
-                //const endpoint = `/clients/announcements/${this.announcement_uuid}/applications/${application_uuid}`;
-                
-                //API SEBA
                 const endpoint= `/revisions/${this.announcement_uuid}/applications/${application_uuid}`;
                 
                 const { data } = await axios.get(endpoint, {   api: "revision",
@@ -104,44 +98,11 @@ export default {
                 const idnumber = data.resource.idnumber
                 const name =  `application-${idnumber}`;
 
-                /*this.$router.push({
-                    name: 'form-viewer-index',
-                    params: {
-                        id: application_uuid,
-                        application: steps,
-                        title: idnumber,
-                        type: 'review',
-                        uuid: this.announcement_uuid,
-                        parent: {
-                            name: 'Revision',
-                            path: '/revision',
-                            redirect: true,
-                            child:{
-                                name: this.announcement_name,
-                                route_name: 'revision.announcements.single',
-                                path: `/revision/${this.announcement_uuid}`,
-                                uuid: this.announcement_uuid
-                            }
-                        },
-                    }
-                })
-                const tab = this.tabs.items.find(tab => (tab.name === name));
-
-                if (!tab)
-                    this.tabs.items.push({
-                        name,
-                        title: `Inscripción de ${idnumber}`,
-                        component: 'application-render',
-                        props: { steps, idnumber }
-                    });
-
-                this.tabs.active = name*/
-
-                const props={
+                const props = {
                     name:`application-${idnumber}`,
                     title:`Inscripción de ${idnumber}`,
-                    component:'application_render',
-                    prop:{steps,idnumber,name}
+                    component:'form_viewer',
+                    prop: {steps, idnumber, name}
                 };
                 this.$emit('open-tab',props);
 
@@ -153,23 +114,11 @@ export default {
 
         async openEvaluations(application_uuid, idnumber){
             try {
-                /*const name = `evaluation-${idnumber}`
-                const tab = this.tabs.items.find(tab => (tab.name === name));
-                if (!tab)
-                    this.tabs.items.push({
-                        name,
-                        title: `Evaluación de ${idnumber}`,
-                        component: 'evaluation-table',
-                        props: { application_uuid }
-                    });
-
-                this.tabs.active = name;*/
-
-                const props={
+                const props = {
                     name:`evaluation-${idnumber}`,
                     title:`Evaluación de ${idnumber}`,
                     component:'evaluation_table',
-                    prop:{application_uuid}
+                    prop: {application_uuid}
                 }
                 this.$emit('open-tab',props);
 
@@ -181,29 +130,13 @@ export default {
 
         async openTasks(application_uuid, idnumber){
             try {
-                /*const name = `tasks-${idnumber}`
-                const tab = this.tabs.items.find(tab => (tab.name === name));
-           
-                if (!tab)
-                    this.tabs.items.push({
-                        name,
-                        title: `Tareas de ${idnumber}`,
-                        component: 'tasks-table',
-                        props: {
-                            application_uuid, 
-                            idnumber
-                        }
-                    });
-
-                this.tabs.active = name*/
-
-                const props={
-                    name:`tasks-${idnumber}`,
-                    title:`Tareas de ${idnumber}`,
-                    component:'tasks_table',
-                    prop:{application_uuid,idnumber}
+                const props = {
+                    name: `tasks-${idnumber}`,
+                    title: `Tareas de ${idnumber}`,
+                    component: 'tasks_table',
+                    prop: { application_uuid, idnumber}
                 }
-                this.$emit('open-tab',props);
+                this.$emit('open-tab', props);
 
             } 
             catch (error) {
@@ -213,9 +146,6 @@ export default {
 
         async openSubmit(submit, idnumber){
             try {
-                //const endpoint = `/clients/tasks/${submit.task.uuid}/submits/${submit.uuid}`;
-                
-                //API SEBA
                 const endpoint= `/tasks/${submit.task.uuid}/submits/${submit.uuid}`;
                 
                 

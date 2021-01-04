@@ -54,44 +54,41 @@ import axios from '@/utils/request';
 import EvaluationTable from '@/views/review/components/EvaluationTable';
 
 export default {
+
     data: () =>({
         total_tasks: [],
         dialog_visible:false,
     }),
-    methods:{
-        openEvaluation(){
-            console.log('entro aca');
-            this.dialog_visible=true;
+
+    props:['prop'],
+
+    computed:{
+        steps(){
+            return this.prop.steps;
+        },
+        name(){
+            return this.prop.name;
+        },
+        idnumber(){
+            return this.prop.idnumber;
         }
     },
 
-    computed:{
-        steps (){
-            return this.$route.params.application
-        },
-        idnumber (){
-            return this.$route.params.title
-        },
-        type (){
-            return this.$route.params.type
-        },
-        uuid (){
-            return this.$route.params.id
+    methods:{
+        openEvaluation(){
+            this.dialog_visible = true;
         }
     },
 
     async mounted(){
         if(this.type === 'review'){
-           try {
-            //const endpoint = `/clients/users/${this.idnumber}/announcements/${this.uuid}/tasks/submits`;
-            
-            //API SEBA
-            const endpoint = `/users/${this.idnumber}/revision/${this.uuid}/tasks/submits`;
-            
-            const  { data } = await axios.get(endpoint, {   api: "revision",
-                oauth: true });
-            
-            this.total_tasks = data.resources;
+            try {
+                const endpoint = `/users/${this.idnumber}/revision/${this.uuid}/tasks/submits`;
+                
+                const  { data } = await axios.get(endpoint, {   api: "revision",
+                    oauth: true });
+                
+                this.total_tasks = data.resources;
             } 
             catch (error) {
                 console.log(error)
