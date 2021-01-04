@@ -1,6 +1,5 @@
 <template>
     <section class="app-main">
- 
         <transition name="fade-transform" mode="out-in">
             <el-tabs               
                 v-model="tabs.active"
@@ -36,8 +35,8 @@ import revision from '@/views/review/index';
 import rbac from '@/views/rbac/usuarios/index';
 import user_permissions from '@/views/rbac/usuarios/components/UserPermissions';
 import reviewsingle from '@/views/review/_uuid';
-import evaluation_table from '@/views/review/components/EvaluationTable';
-import tasks_table from '@/views/review/components/TasksTable';
+import evaluation_table from '@/views/form-viewer/components/EvaluationTable';
+import tasks_table from '@/views/form-viewer/components/TasksTable';
 import form_viewer from '@/views/form-viewer/index';
 import { mapGetters } from 'vuex';
 
@@ -103,10 +102,10 @@ export default {
 .app-main {
     /*50 = navbar  */
     background: white;
-    min-height: calc(100vh - 50px);
     width: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: auto;
+    height: 100%;
 }
 .fixed-header + .app-main {
     padding-top: 50px;
