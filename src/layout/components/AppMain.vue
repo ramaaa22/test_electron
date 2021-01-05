@@ -38,6 +38,7 @@ import reviewsingle from '@/views/review/_uuid';
 import evaluation_table from '@/views/form-viewer/components/EvaluationTable';
 import tasks_table from '@/views/form-viewer/components/TasksTable';
 import form_viewer from '@/views/form-viewer/index';
+import tareas from '@/views/tasks/index';
 import { mapGetters } from 'vuex';
 
 
@@ -58,7 +59,6 @@ export default {
         openTab(props){
             const tab = this.tabs.items.find((tab) => tab.name === props.name);
             const { name, title, component, prop} = props;
-
             if (!tab){
                 this.tabs.items.push({
                     name: name,
@@ -92,7 +92,8 @@ export default {
         user_permissions,
         evaluation_table,
         tasks_table,
-        form_viewer
+        form_viewer,
+        tareas
     }
 }
 </script>
