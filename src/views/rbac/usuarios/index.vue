@@ -3,34 +3,12 @@
         <div
             id="tabs-container"
             class="app-container">
-            <el-tabs
-                type="border-card"
-                v-model="tabs.active"
-                @tab-remove="removeTab">
-                <el-tab-pane
-                    name="users"
-                    label="Usuarios"
-                    :closable="false">
+       
                     <total-users-table
                         :users="users"
                         @actualize-users="retrieveUsers"
                         @open-user="userOpenPermissions"
                     />
-                </el-tab-pane>
-                <el-tab-pane
-                    v-for="tab in tabs.items"
-                    :key="tab.name"
-                    :label="tab.title"
-                    :name="tab.name"
-                    :closable="true"
-                >
-                    <component
-                        @actualize-user-edit="actualizeEdit"
-                        :is="tab.component"
-                        v-bind="tab.props"
-                    />
-                </el-tab-pane>
-            </el-tabs>
         </div>
     </el-main>
 </template>
@@ -41,10 +19,6 @@
 
     export default {
         data: () => ({
-            tabs: {
-                active: "users",
-                items: [],
-            },
             users: [],
         }),
 
@@ -71,15 +45,7 @@
                     component:"user_permissions"
                 };
                 this.$emit('open-tab', props);
-                /*const tab = this.tabs.items.find((tab) => tab.name === name);
-                if (!tab)
-                    this.tabs.items.push({
-                        name,
-                        title: `Permisos de ${row.firstname} ${row.lastname}`,
-                        component: "user-permissions",
-                        props: { row },
-                    });
-                this.tabs.active = name;*/
+            
             },
             async retrieveUsers() {
                 try {
