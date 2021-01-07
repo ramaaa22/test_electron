@@ -73,8 +73,6 @@ export default {
         }
     },
 
-    
-
     async mounted(){
         if(this.type === 'review'){
             try {

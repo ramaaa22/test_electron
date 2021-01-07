@@ -72,7 +72,7 @@ $h-size:
     }
 }
 
-$fontsizes: 10px, 12px, 15px, 17px, 18px, 20px, 22px, 25px, 30px, 35px;
+$fontsizes: 10px, 12px, 15px, 17px, 18px, 20px, 22px, 25px, 30px, 35px, 40px, 45px;
 
 @for $i from 1 through length($fontsizes) {
     $fontsize: nth($fontsizes, $i);
@@ -176,9 +176,13 @@ $rules:
     }
 
     &.is-flex-center {
-        justify-content: center;;
+        justify-content: center;
         align-items: center;
     }
+}
+
+.pointer{
+    cursor: pointer;
 }
 
 .full-width {
