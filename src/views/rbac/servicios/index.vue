@@ -172,9 +172,8 @@
 
             async addService() {
                 let { name, url, client_id, client_secret } = this.new_service;
-                const service_data ={ name, url, client_id, client_secret }
-               
-
+                const service_data = { name, url, client_id, client_secret };
+                
                 try {
                     this.loading_dialog = true;
                     const { data } = await axios.post("/services", service_data, {
