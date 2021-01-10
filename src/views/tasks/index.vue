@@ -61,7 +61,7 @@ export default {
 				api: "revision",
 				oauth: true
 			});
-			this.list = res.data.resources	
+			this.list = res.data.resources;
 		} catch (error) {
 			console.log(error)
 		}
