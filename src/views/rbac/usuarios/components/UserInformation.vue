@@ -1,7 +1,4 @@
 <template>
-    
-    
-
     <el-card 
         v-loading="loading"
         shadow="never"

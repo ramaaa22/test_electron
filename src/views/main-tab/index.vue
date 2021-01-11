@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <el-main>
+    <transition-group appear name="fade" mode="out-in">
+        <el-main key="main">
             <el-row type="flex" justify="end">
                 <profile-container :user="user"/>
                 <el-tooltip content="Salir">
@@ -38,7 +38,7 @@
                 </el-col>
             </el-row>
         </el-main>
-    </div>
+    </transition-group>
 </template>
 
 <script>

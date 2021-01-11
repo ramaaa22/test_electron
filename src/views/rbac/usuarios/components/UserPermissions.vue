@@ -5,7 +5,6 @@
             justify="center">
                 <el-col class="mt-2" :span="6">
                     <user-information 
-                        @actualize="emit"
                         :row="row"/>
                 </el-col>
                 <el-col
@@ -71,11 +70,9 @@
             services:[],
             accesses:[],
         }),
-
-        /*props: {
-            row: Object,
-        },*/
+        
         props: ['prop'],
+        
         computed:{
             row(){
                 return this.prop;
