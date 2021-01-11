@@ -1,15 +1,12 @@
 <template>
-    <transition-group 
-        appear 
-        name="fade-transform" 
-        mode="out-in">
+  
             <div 
                 key="app" 
                 :class="classObj" 
                 class="app-wrapper"> 
                     <app-main />
             </div>
-    </transition-group> 
+
 </template>
 
 <script>

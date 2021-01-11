@@ -1,27 +1,26 @@
 <template>
     <div id="app">
-        <router-view />
+           <transition name="fade">
+        <router-view></router-view>
+      </transition>
     </div>
 </template>
 
 <script>
 export default {
-    created() {
-        this.change_title();
-    },
-
-    watch: {
-        $route: 'change_title',
-    },
-
-    methods: {
-        change_title() {
-           if(this.$route.params.title){
-                let title_dinamyc = this.$route.params.title;
-                document.title = `${title_dinamyc} - FNA`;
-            }
-
-        },
-    },
+ 
 };
 </script>
+<style>
+.slither-enter-active, .slither-leave-active {
+  transition: transform 1s;
+}
+
+.slither-enter, .slither-leave-to {
+  transform: translateX(-100%);
+}
+
+.slither-enter-to, .slither-leave {
+  transform: translateX(0);
+}
+</style>

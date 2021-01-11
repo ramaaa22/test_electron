@@ -1,6 +1,6 @@
 <template>
     <section class="app-main">
-        <transition name="fade-transform" mode="out-in">
+
             <el-tabs               
                 v-model="tabs.active"
                 type="border-card"
@@ -23,7 +23,6 @@
                                 />
                     </el-tab-pane>
             </el-tabs>
-        </transition>
         
     </section>
 </template>
