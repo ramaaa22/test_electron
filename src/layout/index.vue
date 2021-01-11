@@ -2,7 +2,6 @@
   
             <div 
                 key="app" 
-                :class="classObj" 
                 class="app-wrapper"> 
                     <app-main />
             </div>
@@ -36,14 +35,6 @@ export default {
 
     async created() {
         await this.$store.dispatch('user/retrieveUser');
-    },
-
-    methods: {
-        handleClickOutside() {
-            this.$store.dispatch("app/closeSideBar", {
-                withoutAnimation: false,
-            });
-        },
     },
 
     mixins: [
