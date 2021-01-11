@@ -3,12 +3,11 @@
         <div
             id="tabs-container"
             class="app-container">
-       
-                    <total-users-table
-                        :users="users"
-                        @actualize-users="retrieveUsers"
-                        @open-user="userOpenPermissions"
-                    />
+                <total-users-table
+                    :users="users"
+                    @actualize-users="retrieveUsers"
+                    @open-user="userOpenPermissions"
+                />
         </div>
     </el-main>
 </template>

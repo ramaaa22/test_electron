@@ -37,7 +37,7 @@ export default {
         },
     },
 
-    async mounted() {
+    async created() {
         await this.$store.dispatch('user/retrieveUser');
     },
 

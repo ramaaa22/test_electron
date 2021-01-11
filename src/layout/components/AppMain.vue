@@ -32,7 +32,10 @@
 import axios from "@/utils/request";
 import indexmaintab from '@/views/main-tab/index';
 import revision from '@/views/review/index';
+import seguimiento from '@/views/tasks-following/index';
+import tareas from '@/views/tasks/index';
 import rbac from '@/views/rbac/usuarios/index';
+import servicios from '@/views/rbac/servicios/index';
 import user_permissions from '@/views/rbac/usuarios/components/UserPermissions';
 import reviewsingle from '@/views/review/_uuid';
 import evaluation_table from '@/views/form-viewer/components/EvaluationTable';
@@ -93,7 +96,9 @@ export default {
         evaluation_table,
         tasks_table,
         form_viewer,
-        tareas
+        tareas,
+        servicios,
+        seguimiento
     }
 }
 </script>

@@ -1,35 +1,44 @@
 <template>
     <div>
-        <el-row type="flex" justify="end">
-            <el-col :span="4">
-                <profile-container/>
-            </el-col>
-        </el-row>
-        <el-row  type="flex" justify="space-around" class="mt-6">  
-            <el-col 
-                :span="4" 
-                v-for="access in user.accesses" 
-                :key="`access-${access.service.slug}`">
-                    <el-card shadow="hover" :body-style="{ padding: '0px'}"> 
-                        <div 
-                            @click="open(access.service)" 
-                            class="is-flex is-flex-center pointer">                  
-                                <el-button
-                                    type="text"
-                                    class="button">
-                                    <i :class='`las la-${icons[`${access.service.slug}`]}`'></i>
-                                </el-button>
-                                
-                        </div>
-                        <h4 class="text-center">{{access.service.name}}</h4>
-                    </el-card>
-            </el-col>
-        </el-row>
+        <el-main>
+            <el-row type="flex" justify="end">
+                <profile-container :user="user"/>
+                <el-tooltip content="Salir">
+                    <el-button
+                        class="ml-3"
+                        size="small"
+                        type="danger"
+                        plain
+                        circle
+                        @click="logout"
+                        icon="las la-sign-out-alt">
+                    </el-button>
+                </el-tooltip>
+            </el-row>
+
+            <el-row class="mt-6">  
+                <el-col 
+                    :span="8"
+                    class="is-flex is-flex-center mb-6"
+                    v-for="access in user.accesses" 
+                    :key="`access-${access.service.slug}`">
+                        <div>
+                            <div class="is-flex is-flex-center">
+                                <el-button  
+                                    @click="open(access.service)" 
+                                    type="primary" 
+                                    plain 
+                                    circle>
+                                        <i :class='`las la-${icons[`${access.service.slug}`]} fs-11`'></i>
+                                </el-button>   
+                            </div>
+                            <h4 class="text-center">{{access.service.name}}</h4>   
+                        </div>   
+                         
+                </el-col>
+            </el-row>
+        </el-main>
     </div>
-
-    
-
-
 </template>
 
 <script>
@@ -39,9 +48,11 @@ import profileContainer from '@/views/main-tab/components/profile-container';
 export default {
     data: () =>({
         icons: {
-            tareas: 'tasks fs-12',
-            revision: 'clipboard-list fs-12',
-            rbac: 'users fs-12'
+            tareas: 'tasks',
+            revision: 'clipboard-list',
+            rbac: 'users',
+            servicios: 'toolbox',
+            seguimiento: 'search'
         }
     }),
 
@@ -51,7 +62,6 @@ export default {
 
     methods: {
         open(service){
-            console.log(service);
             const props={
                 name:service.slug,
                 title:this.capitalize(service.slug),
@@ -60,9 +70,14 @@ export default {
             }
             this.$emit('open-tab',props);
         },
+        
         capitalize(word){
             return word[0].toUpperCase() + word.slice(1);
-        }
+        },
+        
+        async logout() {
+            await this.$store.dispatch("user/logout");
+		},
     },
 
     components: {
