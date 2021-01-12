@@ -769,10 +769,7 @@ export default {
             try {
                 this.loading = true;
                 this.$forceUpdate();
-            
-                //const endpoint = `/clients/announcements/${this.announcement_uuid}/applications${ page ? `?page=${page}` : '' }`;
-                
-                //API SEBA
+
                 const endpoint= `/revisions/${this.announcement_uuid}/applications`;
 
                 const { data } = await axios.get( endpoint, { 

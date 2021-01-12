@@ -2,9 +2,9 @@
 <el-main>
     <div class="app-container">
         <el-row type="flex" justify="center">
-            <el-col :span="22">
+            <el-col>
                 <el-table
-                    size="small"
+                    size="mini"
                     v-loading="loading"
                     :data="announcements"
                     element-loading-text="Cargando"
