@@ -1,8 +1,14 @@
 <template>
-    <div>
-        <el-row>
-            <el-col :span="22">
-                 <el-table
+<el-main>
+    <div class="app-container">
+        <el-row type="flex" justify="center">
+            <el-col>
+                <el-table
+                    :stripe=true
+                    size="mini"
+                    border
+                    fit
+                    highlight-current-row
                     :data="followings">
                         <el-table-column type="expand">
                         <template slot-scope="props">                    
@@ -14,14 +20,16 @@
                         </template>
                         </el-table-column>
                         <el-table-column
-                        label="Nombre"
-                        prop="name">
+                            align="center"
+                            label="Nombre"
+                            prop="name">
                         </el-table-column>
 
                 </el-table>
             </el-col>
         </el-row>
     </div>
+</el-main>
 </template>
 
 <script>
