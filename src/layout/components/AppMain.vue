@@ -30,13 +30,19 @@
 <script>
 import axios from "@/utils/request";
 import indexmaintab from '@/views/main-tab/index';
+
 import revision from '@/views/review/index';
+import reviewsingle from '@/views/review/_uuid';
+
 import seguimiento from '@/views/tasks-following/index';
+import following_table from '@/views/tasks-following/_id';
+
 import tareas from '@/views/tasks/index';
+
 import rbac from '@/views/rbac/usuarios/index';
 import servicios from '@/views/rbac/servicios/index';
 import user_permissions from '@/views/rbac/usuarios/components/UserPermissions';
-import reviewsingle from '@/views/review/_uuid';
+
 import evaluation_table from '@/views/form-viewer/components/EvaluationTable';
 import tasks_table from '@/views/form-viewer/components/TasksTable';
 import form_viewer from '@/views/form-viewer/index';
@@ -97,7 +103,8 @@ export default {
         form_viewer,
         tareas,
         servicios,
-        seguimiento
+        seguimiento,
+        following_table
     }
 }
 </script>

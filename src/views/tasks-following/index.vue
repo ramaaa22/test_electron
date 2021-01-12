@@ -11,12 +11,16 @@
                     highlight-current-row
                     :data="followings">
                         <el-table-column type="expand">
-                        <template slot-scope="props">                    
-                            <el-button 
+                        <template slot-scope="props">
+                            <div 
                                 v-for="task in props.row.tasks"
-                                :key="task.name">
+                                :key="`${task.name}-${props.row.name}`">                
+                            <el-button
+                                @click="openFollowing(task.name, props.row.name)"
+                                type="text">
                                 {{task.name}}
                             </el-button>
+                            </div>
                         </template>
                         </el-table-column>
                         <el-table-column
@@ -66,10 +70,10 @@ export default {
    /* mounted (){
         pedido a la api para traer los seguimientos.
         CASE 1: Las tareas de esos seguimientos vienen con los seguimientos.
-    }
+    }*/
     
     methods: {
-    ----CASE 2: Las tareas de los seguimientos hay que pedirlas a la api
+    /*----CASE 2: Las tareas de los seguimientos hay que pedirlas a la api
         cuando el usuario toca el expand
         en el evento expand-change. 
         TODO: Ver si en esa funcion puede ser de ayuda el metodo de la tabla
@@ -79,8 +83,19 @@ export default {
         Se manda el emit a app-main para abrir en otra tab
         _id de tasks-following.
             ---> componente que muestra la tabla con los inscriptos 
-                que tienen asociada esa tarea
-    }*/
+                que tienen asociada esa tarea*/
+
+        openFollowing(task_name, following_name){
+            const props = {
+                    name:`following-${following_name}-task-${task_name}`,
+                    title:`${following_name}-${task_name}`,
+                    component:'following_table',
+                    prop: {task_name}
+                };
+            this.$emit('open-tab', props);
+
+        }
+    }
 
 
 
