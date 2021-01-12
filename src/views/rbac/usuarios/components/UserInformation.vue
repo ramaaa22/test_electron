@@ -74,7 +74,7 @@
             </el-input>
             <span
                 v-else
-                v-text="row.firstname">
+                v-text="user.firstname">
             </span>
             <el-divider></el-divider>
         </div>
@@ -87,7 +87,7 @@
             </el-input>
             <span
                 v-else
-                v-text="row.lastname">
+                v-text="user.lastname">
             </span>
             <el-divider></el-divider>
         </div>
@@ -100,7 +100,7 @@
             </el-input>
             <span
                 v-else
-                v-text="row.idnumber">
+                v-text="user.idnumber">
             </span>
             <el-divider></el-divider>
         </div>
@@ -113,7 +113,7 @@
             </el-input>
             <span
                 v-else
-                v-text="row.email">
+                v-text="user.email">
             </span>
         </div>
     </el-card>
@@ -130,16 +130,16 @@
                 firstname:'',
                 lastname:'',
                 idnumber:'',
-                email:''
+                email:'',
+                uuid:''
             },
 
             user_data: {},
         }),
 
         mounted() {
-            let { firstname, lastname, idnumber, email } = this.row;
-            this.user = { firstname, lastname, idnumber, email };
-        
+            let { firstname, lastname, idnumber, email, uuid } = this.row;
+            this.user = { firstname, lastname, idnumber, email, uuid };
         },
 
         props: {
@@ -165,8 +165,8 @@
             },
             cancelEdit() {
                 this.edit = false;
-                let { firstname, lastname, idnumber, email } = this.row;
-                this.user = { firstname, lastname, idnumber, email };
+                let { firstname, lastname, idnumber, email,uuid } = this.row;
+                this.user = { firstname, lastname, idnumber, email, uuid };
             },
             
             async editUserInformation() {
@@ -180,6 +180,17 @@
                     });
 
                     this.$emit("actualize-user-edit", this.row.uuid);
+                    let { firstname, lastname, idnumber, email, uuid } = this.user;
+                    console.log(this.user);
+                    this.row={
+                        firstname,
+                        lastname,
+                        idnumber,
+                        email, 
+                        uuid
+                    }
+                    this.mounted;
+                    this.user_data={};
                 } 
                 catch (error) {
                     console.log(error);
