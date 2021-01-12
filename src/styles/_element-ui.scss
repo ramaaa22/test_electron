@@ -192,6 +192,16 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
 // TODO: Clase que deja margen derecho a la ultima tab que se abra, sin el margen
 // se tapa el boton de cierre.
+
+.el-tabs--top.el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active{
+   color: #0B71B8;
+}
+
+.el-tabs--top.el-tabs--border-card > .el-tabs__header .el-tabs__item{
+   color: white;
+}
+
+
 .el-tabs--top.el-tabs--border-card > .el-tabs__header .el-tabs__item:last-child{
    margin-right: 70px;
 }
@@ -200,4 +210,8 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 .el-tabs--border-card{
    border: none;
    box-shadow: none;
+}
+.el-tabs--border-card > .el-tabs__header {
+   background-color: #085388;
+   border: none;
 }

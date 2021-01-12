@@ -1,4 +1,6 @@
 <template>
+<el-row>
+    <el-col class="is-flex is-flex-center container-login">
     <layout id="form-box">
         <h2 
             class="text-center my-3">INGRESO</h2>
@@ -35,6 +37,8 @@
             </el-form-item>
         </el-form>
     </layout>
+    </el-col>
+</el-row>
 </template>
 
 <script>
@@ -125,7 +129,7 @@ export default {
 </script>
 
 <style lang="scss" >
-@import "~@/styles/_variables.scss";
+/*@import "~@/styles/_variables.scss";
 @import "~@/styles/_functions.scss";
 
 #auth_login #app {
@@ -134,5 +138,9 @@ export default {
     justify-content: center;
     align-items: center;
     @include linear-gradient($primary, $cool);
+}*/
+
+.container-login{
+    height: 95vh;
 }
 </style>
