@@ -52,7 +52,8 @@ export default {
             revision: 'clipboard-list',
             rbac: 'users',
             servicios: 'toolbox',
-            seguimiento: 'search'
+            seguimiento: 'search',
+            formularios: 'wpforms'
         }
     }),
 

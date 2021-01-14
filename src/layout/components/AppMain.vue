@@ -46,6 +46,8 @@ import user_permissions from '@/views/rbac/usuarios/components/UserPermissions';
 import evaluation_table from '@/views/form-viewer/components/EvaluationTable';
 import tasks_table from '@/views/form-viewer/components/TasksTable';
 import form_viewer from '@/views/form-viewer/index';
+
+import formularios from '@/views/form-builder/index';
 import { mapGetters } from 'vuex';
 
 
@@ -103,7 +105,8 @@ export default {
         tareas,
         servicios,
         seguimiento,
-        following_table
+        following_table,
+        formularios
     }
 }
 </script>
