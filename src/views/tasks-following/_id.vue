@@ -20,10 +20,66 @@
        <el-table
             size="mini"
             v-loading="loading"
-            :data="applications"
+            :data="inscriptions"
             border
             fit
             highlight-current-row>
+            <el-table-column
+                prop="name"
+                label="Nombre">
+            </el-table-column>
+
+            <el-table-column
+                prop="lastname"
+                label="Apellido">
+            </el-table-column>
+
+            <el-table-column 
+                align="center"
+                label="Operaciones"
+                width="170" 
+                fixed="right">
+                <template slot-scope="{ row: inscription }">
+                    <el-button-group>
+                        <el-tooltip
+                            class="item"
+                            effect="dark"
+                            content="Abrir inscripción"
+                            placement="top">
+                            <el-button
+                                round
+                                plain
+                                size="mini"
+                                icon="las la-edit"
+                              ></el-button>
+                        </el-tooltip>
+                        <el-tooltip
+                            class="item"
+                            effect="dark"
+                            content="Abrir tareas"
+                            placement="top">
+                            <el-button
+                                round
+                                plain
+                                size="mini"
+                                icon="las la-tasks">
+                                </el-button>
+                        </el-tooltip>
+                        <el-tooltip
+                            class="item"
+                            effect="dark"
+                            content="Abrir evaluaciones"
+                            placement="top">
+                            <el-button
+                                round
+                                plain
+                                size="mini"
+                                icon="las la-gavel"
+                                ></el-button>
+                        </el-tooltip>
+                    </el-button-group>
+                </template>
+            </el-table-column>
        </el-table>
         
     </div>
@@ -32,7 +88,26 @@
 
 <script>
 export default {
-        
+    data: () => ({
+        inscriptions: [
+            {
+                name: 'Marcela',
+                lastname: 'Dominguez'
+            },
+            {
+                name: 'Mariana',
+                lastname: 'Martinez'
+            },
+            {
+                name: 'Diego',
+                lastname: 'Aguero'
+            },
+            {
+                name: 'Cristian',
+                lastname: 'Dominguez'
+            },
+        ]
+    })
 }
 </script>
 
