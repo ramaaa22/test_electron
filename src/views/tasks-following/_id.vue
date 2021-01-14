@@ -51,7 +51,8 @@
                                 plain
                                 size="mini"
                                 icon="las la-edit"
-                              ></el-button>
+                                @click="sendOpenEmit(inscription.name, 'inscription')"> 
+                            </el-button>
                         </el-tooltip>
                         <el-tooltip
                             class="item"
@@ -62,8 +63,9 @@
                                 round
                                 plain
                                 size="mini"
-                                icon="las la-tasks">
-                                </el-button>
+                                icon="las la-tasks"
+                                @click="sendOpenEmit(inscription.name, 'tasks')">
+                            </el-button>
                         </el-tooltip>
                         <el-tooltip
                             class="item"
@@ -75,7 +77,8 @@
                                 plain
                                 size="mini"
                                 icon="las la-gavel"
-                                ></el-button>
+                                @click="sendOpenEmit(inscription.name, 'evaluations')">
+                            </el-button>
                         </el-tooltip>
                     </el-button-group>
                 </template>
@@ -107,7 +110,38 @@ export default {
                 lastname: 'Dominguez'
             },
         ]
-    })
+    }),
+
+    methods: {
+
+        checkType(type){
+            switch (type) {
+                case 'inscription':
+                console.log('inscription')
+                    break;
+                case 'tasks':
+                console.log('tasks')
+                    break;
+                case 'evaluations':
+                console.log('evaluations')
+                    break;
+            }
+        },
+
+        sendOpenEmit(uuid, type){
+
+            this.checkType(type);
+
+            /*const props = {
+                    name:`following-${following_name}-task-${task_name}`,
+                    title:`${following_name}-${task_name}`,
+                    component:'following_table',
+                    prop: {task_name}
+                };
+            this.$emit('open-tab', props);*/
+
+        }
+    }
 }
 </script>
 

@@ -1,48 +1,20 @@
 <template>
     <el-main>
         <el-row>
-            <el-col class="is-flex is-justify-flex-end">
+            <el-col v-if="component === 'application-render'" class="is-flex is-justify-flex-end">
                 <download-pdf
                     :steps="steps"
-                    :idnumber="idnumber"
-                    :type="type"/>
+                    :idnumber="idnumber"/>
             </el-col>
 
-            <!-- <div class="text-right mb-2 pt-2 pr-5 actions">
-                <el-tooltip
-                    effect="dark"
-                    content="Evaluaciones"
-                    placement="top">
-                    <el-badge 
-                        :value=1>
-                            <el-button
-                                size="mini"
-                                type="primary"
-                                icon="las la-gavel"
-                                class="el-dropdown-link"
-                                plain
-                                @click="openEvaluation"
-                                circle>
-                            </el-button>
-                    </el-badge>
-                </el-tooltip>
-            </div> -->
-
         </el-row>
-        <application-render :steps="steps"/>
-        <tasks-table
-            v-if="total_tasks.length !== 0"
-            :tasks="total_tasks"
-            :idnumber="idnumber"/>
 
-        <el-dialog
-            title="Evaluación"
-            :visible.sync="dialog_visible"
-            width="50%">
-            <evaluation-table
-                :application_uuid="uuid">
-            </evaluation-table>
-        </el-dialog>    
+        <component
+            :is="component"
+            :steps="steps"
+            :application_uuid="uuid"/>
+        
+        
     </el-main>
 </template>
 
@@ -50,6 +22,7 @@
 import ApplicationRender from '@/views/form-viewer/components/ApplicationRender';
 import DownloadPdf from '@/views/form-viewer/components/DownloadPdf';
 import TasksTable from '@/views/form-viewer/components/TasksTable';
+import EvaluationTable from '@/views/form-viewer/components/EvaluationTable';
 import axios from '@/utils/request';
 
 export default {
@@ -70,33 +43,22 @@ export default {
         },
         idnumber(){
             return this.prop.idnumber;
+        },
+        component(){
+            return this.prop.component_intern;
+        },
+        uuid(){
+            return this.prop.application_uuid;
         }
     },
 
-    async mounted(){
-        if(this.type === 'review'){
-            try {
-                const endpoint = `/users/${this.idnumber}/revision/${this.uuid}/tasks/submits`;
-                
-                const  { data } = await axios.get(endpoint, {   api: "revision",
-                    oauth: true });
-                
-                this.total_tasks = data.resources;
-            } 
-            catch (error) {
-                console.log(error)
-            }
-            finally {
-                this.loading = false  
-            } 
-        }
-    },
+   
 
     components: {
         ApplicationRender,
         DownloadPdf,
         TasksTable,
-        
+        EvaluationTable
     },
 }
 </script>

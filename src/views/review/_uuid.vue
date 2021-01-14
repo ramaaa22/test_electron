@@ -67,12 +67,13 @@ export default {
                 const steps = data.resource.form
                 const idnumber = data.resource.idnumber
                 const name =  `application-${idnumber}`;
+                const component_intern = 'application-render';
 
                 const props = {
                     name:`application-${idnumber}`,
                     title:`Inscripción de ${idnumber}`,
                     component:'form_viewer',
-                    prop: {steps, idnumber, name}
+                    prop: {steps, idnumber, name, component_intern}
                 };
                 this.$emit('open-tab',props);
 
@@ -83,19 +84,17 @@ export default {
         },
 
         async openEvaluations(application_uuid, idnumber){
-            try {
-                const props = {
-                    name:`evaluation-${idnumber}`,
-                    title:`Evaluación de ${idnumber}`,
-                    component:'evaluation_table',
-                    prop: {application_uuid}
-                }
-                this.$emit('open-tab',props);
+            const component_intern = 'evaluation-table';
 
-            } 
-            catch (error) {
-                console.log(error)
-            }      
+            
+            const props = {
+                name:`evaluation-${idnumber}`,
+                title:`Evaluación de ${idnumber}`,
+                component:'form_viewer',
+                prop: {application_uuid, component_intern}
+            }
+            this.$emit('open-tab',props);
+
         },
 
         async openTasks(application_uuid, idnumber){
