@@ -53,7 +53,7 @@ export default {
             rbac: 'users',
             servicios: 'toolbox',
             seguimiento: 'search',
-            formularios: 'wpforms'
+            formularios: 'poll-h'
         }
     }),
 

@@ -160,7 +160,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
     #tabs-container {
         .el-tabs__content {
             padding: 0;

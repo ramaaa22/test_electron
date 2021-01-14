@@ -130,4 +130,29 @@ export default {
         padding-right: 15px;
     }
 }
+
+.el-tabs--top.el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active{
+   color: #0B71B8;
+}
+
+.el-tabs--top.el-tabs--border-card > .el-tabs__header .el-tabs__item{
+   color: white;
+}
+
+
+.el-tabs--top.el-tabs--border-card > .el-tabs__header .el-tabs__item:last-child{
+   margin-right: 70px;
+}
+
+//TODO: modificación visual importante
+.el-tabs--border-card{
+   border: none;
+   box-shadow: none;
+ 
+}
+
+.el-tabs--top.el-tabs--border-card > .el-tabs__header{
+   background-color: #085388;
+   border: none;
+}
 </style>
