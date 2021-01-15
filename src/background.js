@@ -2,18 +2,21 @@
 
 import { app, protocol, BrowserWindow} from 'electron'
 
+
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const path = require('path')
 const isDevelopment = process.env.NODE_ENV !== 'production'
-const {autoUpdater} = require('electron-updater');
+//const {autoUpdater} = require('electron-updater');
 const log = require ('electron-log');
+
+import { autoUpdater } from "electron-updater"
 
 let win;
 
 //configure logging (electron-updater)
-autoUpdater.logger = log;
-autoUpdater.logger.transports.file.level='info';
+//autoUpdater.logger = log;
+//autoUpdater.logger.transports.file.level='info';
 log.info('App starting');
 
 // Scheme must be registered before the app is ready
@@ -23,7 +26,7 @@ protocol.registerSchemesAsPrivileged([
 
 async function createWindow() {
   //trigger autoupdate check
-  autoUpdater.checkForUpdates();
+  //autoUpdater.checkForUpdates();
   
   // Create the browser window.
   win = new BrowserWindow({
@@ -33,11 +36,12 @@ async function createWindow() {
     height:700,
     show:false,
     frame: false,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
-            enableRemoteModule: true,
-            nodeIntegration: true
-        }
+    icon: path.join(__static, 'icon.png'),
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      enableRemoteModule: true,
+      nodeIntegration: true
+    }
   })
 
 
@@ -46,9 +50,10 @@ async function createWindow() {
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
     if (!process.env.IS_TEST) win.webContents.openDevTools()
   } else {
-    createProtocol('app')
-    // Load the index.html when not in development
-    win.loadURL('app://./index.html')
+      createProtocol('app')
+      // Load the index.html when not in development
+      win.loadURL('app://./index.html')
+      autoUpdater.checkForUpdatesAndNotify()
   }
 }
 
@@ -100,7 +105,7 @@ if (isDevelopment) {
   }
 }
 
-autoUpdater.on('checking-for-update', () => {
+/*autoUpdater.on('checking-for-update', () => {
   console.log('Checking for update...');
 })
 autoUpdater.on('update-available', (info) => {
@@ -120,4 +125,4 @@ autoUpdater.on('download-progress', (progressObj) => {
 })
 autoUpdater.on('update-downloaded', (info) => {
   console.log('Update downloaded');
-});
+});*/

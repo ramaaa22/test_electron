@@ -17,9 +17,10 @@ const port = process.env.port || process.env.npm_config_port || 9527 // dev port
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
-   pluginOptions: {
+  pluginOptions: {
     electronBuilder: {
-      preload: 'src/preload.js' 
+      preload: 'src/preload.js',
+      publish: ['github']
     }
   },
   /**
@@ -43,7 +44,7 @@ module.exports = {
     },
     before: require('./mock/mock-server.js')
   },
- 
+
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
