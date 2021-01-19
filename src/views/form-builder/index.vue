@@ -542,21 +542,24 @@ export default {
                         duration: 5000
                     });
                 // Chequeo que no exista
-                else if (steps[step.name])
-                    return this.$message({
-                        offset: 40,
-                        showClose: true,
-                        type: 'warning',
-                        message: `El paso ${step.title} se encuentra repetido bajo el nombre único ${step.name}. Por favor soluciónelo e intente nuevamente`,
-                        duration: 5000
-                    });
-
+                else{
+                    const exists_name = this.steps.filter(step_to_find=> step_to_find.name===step.name).length>1;
+                    const exists_title = this.steps.filter(step_to_find=> step_to_find.title===step.title).length>1;
+                    if (exists_name || exists_title)
+                        return this.$message({
+                            offset: 40,
+                            showClose: true,
+                            type: 'warning',
+                            message: `El paso ${step.title} se encuentra repetido bajo el nombre único "${step.name}". Por favor soluciónelo e intente nuevamente`,
+                            duration: 5000
+                        });
+                }
                 step_index[step.id] = step.name;
 
                 const fields = [];
                 const field_index = {};
 
-                // Recorro los campos
+                // Recorro los campos de cada paso
                 for(let current_field of step.fields) {
                     const is_text = current_field.type === 'text';
                     if (!is_text && !current_field.name)
@@ -568,7 +571,9 @@ export default {
                             duration: 5000
                         });
                     // Chequeo que no este repetido
-                    if (!is_text && fields[current_field.name])
+                    const count = fields.filter(field => field.name===current_field.name).length;
+                    //if (!is_text && fields[current_field.name])
+                    if (!is_text && count>0)
                         return this.$message({
                             offset: 40,
                             showClose: true,

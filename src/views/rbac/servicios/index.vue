@@ -19,6 +19,7 @@
                     border
                     fit
                     size="mini"
+                    v-loading="loading_table"
                     :data="services"
                     @row-click="chooseRow"
                     cell-class-name="pointer">
@@ -100,8 +101,8 @@
         data: () => ({
             services: [],
             title: null,
-
             loading:false,
+            loading_table:false,
             visible_dialog:false,
             edit:false,
             service:{
@@ -126,6 +127,7 @@
 
         methods: {
             async retrieveServices() {
+                this.loading_table=true;
                 try {
                     const { data } = await axios.get("/services", {
                         api: "users",
@@ -135,6 +137,9 @@
                 } 
                 catch (error) {
                     console.log(error);
+                }
+                finally{
+                    this.loading_table=false;
                 }
             },
 

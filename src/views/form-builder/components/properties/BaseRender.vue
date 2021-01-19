@@ -17,6 +17,7 @@
                 v-model="field.label"
                 @input="changeFieldLabel" />
         </el-form-item>
+        <span>{{field.label.length}}/75</span>
 
         <el-form-item 
             label="Texto de ayuda"
@@ -48,6 +49,8 @@ export default {
         }
     },
 
+    
+
     methods: {
         changeFieldLabel() {
             const label = this.satinizeTitle(this.field.label);
@@ -55,7 +58,17 @@ export default {
 
             this.field.label = label;
             this.field.name = satinized;
-
+            if (this.field.label.length>75){
+                this.$message({
+                        offset: 40,
+                        showClose: true,
+                        type: 'warning',
+                        message: 'La etiqueta no puede contener más de 75 caracteres. Recuerde que puede usar el texto de ayuda si necesita agregar información',
+                        duration: 5000
+                });
+                this.field.label= this.field.label.slice(0,75);
+                this.field.name= this.field.name.slice(0,75);
+            }
             this.$forceUpdate();
         }
     },

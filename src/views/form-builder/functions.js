@@ -1,14 +1,17 @@
 export default {
     methods: {
         satinizeTitle(text) {
+            text=text.replace(/([\ \t]+(?=[\ \t])|^\s+|\s+$)/g, ' ');
             return text
                 .replace(/[^a-zA-Zá-úÁ-Ú0-9 üÜñÑ?¿]+/g, '');
         },
 
         satinizeSlug(text) {
+            text=text.replace(/([\ \t]+(?=[\ \t])|^\s+|\s+$)/g, '');
             return text
                 .toLowerCase()
                 .replace(/ /g, '_')
+                .replace(/-/g, '_')
                 .replace(/á/g, 'a')
                 .replace(/é/g, 'e')
                 .replace(/í/g, 'i')
