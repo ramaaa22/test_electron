@@ -1,6 +1,7 @@
 export default {
     methods: {
         satinizeTitle(text) {
+            text= text.charAt(0).toUpperCase() + text.slice(1);
             text=text.replace(/([\ \t]+(?=[\ \t])|^\s+|\s+$)/g, ' ');
             return text
                 .replace(/[^a-zA-Zá-úÁ-Ú0-9 üÜñÑ?¿()"-/]+/g, '');
