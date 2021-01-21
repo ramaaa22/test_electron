@@ -7,7 +7,7 @@ import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const path = require('path')
 const isDevelopment = process.env.NODE_ENV !== 'production'
-//const {autoUpdater} = require('electron-updater');
+
 const log = require ('electron-log');
 
 import { autoUpdater } from "electron-updater"
@@ -25,15 +25,12 @@ protocol.registerSchemesAsPrivileged([
 ])
 
 async function createWindow() {
-  //trigger autoupdate check
-  //autoUpdater.checkForUpdates();
-  
   // Create the browser window.
   win = new BrowserWindow({
-    minWidth: 1024,
-    minHeight: 700,
-    width:1024,
-    height:700,
+    minWidth: 1280,
+    minHeight: 768,
+    width:1280,
+    height:768,
     show:false,
     frame: false,
     icon: path.join(__static, 'icon.png'),

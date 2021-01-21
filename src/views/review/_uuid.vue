@@ -34,9 +34,9 @@ export default {
     props: ['prop'],
 
     computed: {
-          announcement_uuid(){
+        announcement_uuid(){
               return this.prop;
-          },
+        },
         announcement_name () {
             return this.$route.params.title;
         }

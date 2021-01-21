@@ -13,7 +13,8 @@
                 <el-input 
                     :readonly="loading"
                     v-model="form.idnumber"
-                    placeholder="Documento" 
+                    placeholder="Documento"
+                    required
                     prefix-icon="las la-id-card"></el-input>
             </el-form-item>
 
@@ -24,6 +25,7 @@
                     :readonly="loading"
                     v-model="form.password"
                     placeholder="Contraseña"
+                    required
                     type="password"
                     prefix-icon="las la-key"></el-input>
             </el-form-item>

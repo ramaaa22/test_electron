@@ -28,7 +28,7 @@ export const routes = [
 				name: 'form-builder',
 				component: () => import('@/views/form-builder/index'),
 				meta: { 
-					title: 'Crear Formulario', 
+					title: 'FNA', 
 					icon: 'las la-folder-plus',
 					require_auth: true
 				}

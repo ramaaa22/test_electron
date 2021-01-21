@@ -358,6 +358,7 @@
         <el-table
             size="mini"
             v-loading="loading"
+            element-loading-text="Cargando"
             :data="applications"
             border
             fit

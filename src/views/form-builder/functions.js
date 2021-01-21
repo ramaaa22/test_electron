@@ -3,11 +3,12 @@ export default {
         satinizeTitle(text) {
             text=text.replace(/([\ \t]+(?=[\ \t])|^\s+|\s+$)/g, ' ');
             return text
-                .replace(/[^a-zA-Zá-úÁ-Ú0-9 üÜñÑ?¿]+/g, '');
+                .replace(/[^a-zA-Zá-úÁ-Ú0-9 üÜñÑ?¿()"-/]+/g, '');
         },
 
         satinizeSlug(text) {
             text=text.replace(/([\ \t]+(?=[\ \t])|^\s+|\s+$)/g, '');
+            text=text.trim();
             return text
                 .toLowerCase()
                 .replace(/ /g, '_')

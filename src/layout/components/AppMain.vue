@@ -5,7 +5,8 @@
                 v-model="tabs.active"
                 type="border-card"
                 @tab-remove="removeTab">
-                    <el-tab-pane name="principal" label="Principal">
+                    <el-tab-pane>
+                        <span slot="label"><i class="las la-home"></i> Menú</span>
                         <indexmaintab @open-tab="openTab"/>
                     </el-tab-pane>
 
@@ -60,7 +61,7 @@ export default {
 		loading_drawer: false,	
         application: [],
         tabs:{
-            active:'principal',
+            active:'0',
             items:[]
         }
     }),
@@ -87,7 +88,7 @@ export default {
             if (active_name === target_name){
                 let pos =tabs_names.indexOf(target_name)-1;
                 if (pos>-1) this.tabs.active = tabs[pos].name; 
-                else this.tabs.active = 'principal'; 
+                else this.tabs.active = '0'; 
             }
             this.tabs.items = tabs.filter((tab) => tab.name !== target_name);
         },

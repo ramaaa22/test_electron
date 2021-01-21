@@ -20,6 +20,7 @@
                     fit
                     size="mini"
                     v-loading="loading_table"
+                    element-loading-text="Cargando"
                     :data="services"
                     @row-click="chooseRow"
                     cell-class-name="pointer">

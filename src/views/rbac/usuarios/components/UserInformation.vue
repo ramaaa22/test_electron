@@ -41,7 +41,7 @@
                         plain
                         circle
                         size="mini"
-                        @click="edit = !edit"
+                        
                     >
                         <i class="las la-sync"></i>
                     </el-button>

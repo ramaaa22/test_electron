@@ -19,8 +19,7 @@ const port = process.env.port || process.env.npm_config_port || 9527 // dev port
 module.exports = {
   pluginOptions: {
     electronBuilder: {
-      preload: 'src/preload.js',
-      publish: ['github']
+      preload: 'src/preload.js'
     }
   },
   /**
