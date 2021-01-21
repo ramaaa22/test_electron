@@ -1,6 +1,5 @@
 <template>
     <section class="app-main">
-
             <el-tabs               
                 v-model="tabs.active"
                 type="border-card"

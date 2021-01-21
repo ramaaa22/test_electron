@@ -3,17 +3,6 @@
         <el-main key="main">
             <el-row type="flex" justify="end">
                 <profile-container :user="user"/>
-                <el-tooltip content="Salir">
-                    <el-button
-                        class="ml-3"
-                        size="small"
-                        type="danger"
-                        plain
-                        circle
-                        @click="logout"
-                        icon="las la-sign-out-alt">
-                    </el-button>
-                </el-tooltip>
             </el-row>
 
             <el-row class="mt-6">  
@@ -24,15 +13,25 @@
                     :key="`access-${access.service.slug}`">
                         <div>
                             <div class="is-flex is-flex-center">
-                                <el-button  
+                                <el-button
+                                    circle
+                                    @click="open(access.service)">
+                                    <el-image
+                                        style="width: 150px; height: 150px"
+                                        :src="urls[`${access.service.slug}`]">
+                                    </el-image>
+                                </el-button>    
+                                    
+                               
+                                <!-- <el-button  
                                     @click="open(access.service)" 
                                     type="primary" 
                                     plain 
                                     circle>
                                         <i :class='`las la-${icons[`${access.service.slug}`]} fs-11`'></i>
-                                </el-button>   
+                                </el-button>    -->
                             </div>
-                            <h4 class="text-center">{{access.service.name}}</h4>   
+                            <h4 class="text-center" @click="open(access.service)">{{access.service.name}}</h4>   
                         </div>   
                          
                 </el-col>
@@ -44,6 +43,15 @@
 <script>
 import { mapGetters } from 'vuex';
 import profileContainer from '@/views/main-tab/components/profile-container';
+const path = require('path');
+import revision from '@/assets/revision.png';
+import rbac from '@/assets/rbac.png';
+import servicios from '@/assets/servicios.png';
+import seguimiento from '@/assets/seguimiento.png';
+import formularios from '@/assets/formularios.png';
+
+
+
 
 export default {
     data: () =>({
@@ -54,7 +62,14 @@ export default {
             servicios: 'toolbox',
             seguimiento: 'search',
             formularios: 'poll-h'
-        }
+        },
+        urls:{
+            revision,
+            rbac,
+            servicios,
+            seguimiento,
+            formularios
+        } 
     }),
 
     computed: {

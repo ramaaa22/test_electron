@@ -73,8 +73,6 @@ export default {
                         message: 'Puede usar el campo "Texto de ayuda" si necesita agregar más información',
                         duration: 5000
                 });
-                //this.field.label= this.field.label.slice(0,75);
-                //this.field.name= this.field.name.slice(0,75);
             }
             this.$forceUpdate();
         }

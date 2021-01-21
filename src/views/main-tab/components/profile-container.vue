@@ -1,11 +1,11 @@
 <template>
     <div>
-        <el-tooltip content="Mi Usuario">
+        <el-tooltip content="Usuario">
             <el-popover
                 width="200"
                 placement="left-start"
                 trigger="click">
-                        <el-row >
+                    <el-row >
                         <el-col>
                             <h5 class="c-text-secondary">Nombre</h5>
                             {{user.firstname}} {{user.lastname}}
@@ -18,6 +18,17 @@
                             <h5 class="c-text-secondary">Documento</h5>
                             {{user.idnumber}}
                         </el-col>
+                        <el-col>
+                            <el-button
+                                class="ml-3"
+                                size="small"
+                                type="danger"
+                                round
+                                @click="logout"
+                                icon="las la-sign-out-alt">
+                                Cerrar sesión
+                            </el-button>
+                        </el-col>
                     </el-row>
                 
                     <el-button 
@@ -29,6 +40,8 @@
                         <i class="las la-user"></i>
                     </el-button>
             </el-popover>
+
+            
         </el-tooltip>
     </div>
 </template>
@@ -38,7 +51,12 @@
 export default {
     props: [
         'user'
-    ]
+    ],
+    methods:{
+        async logout() {
+            await this.$store.dispatch("user/logout");
+		},
+    }
 }
 </script>
 

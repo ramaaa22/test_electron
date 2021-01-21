@@ -51,7 +51,6 @@
             :stripe=true
             :data="users.filter(data => !search || data.idnumber.includes(search))"
             @row-click="open"
-            v-loading="loading"
             cell-class-name="pointer">
             <el-table-column
                 sortable
@@ -121,7 +120,8 @@
                 </el-form-item>
 
                 <el-form-item
-                    label="Email">
+                    label="Email"
+                    >
                     <el-input
                         size="small"
                         v-model="new_user.email"
@@ -148,7 +148,7 @@ import axios from "@/utils/request";
 
 export default {
     data: () => ({
-        loading: false,
+        loading: true,
         loading_dialog: false,
         user_index: {},
         user_dialog_visible: false,
@@ -161,11 +161,12 @@ export default {
         search:''
     }),
     props: { users: Array },
+    
     methods: {
         open(row) {
             this.$emit("open-user", row);
         },
-
+        
         async addUser() {
             try {
                 this.loading = true;

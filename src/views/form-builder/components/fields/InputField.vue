@@ -11,7 +11,7 @@ export default {
     props: [ 'field' ],
 
     data: () => ({
-        value: ''
+        value: '',
     }),
 
     components: {

@@ -1,20 +1,21 @@
 <template>
-<el-main>
-    <div 
-        id="tabs-container"
-        class="app-container">
-                <applications-table
-                    @open-application="openApplication"
-                    @open-evaluations="openEvaluations"
-                    @open-tasks="openTasks"
-                    :titles="announcement.columns"
-                    :filters="announcement.filters"
-                    :types="announcement.types"
-                    :tabs="tabs.items"
-                    :announcement_uuid="prop"
-                    :update="update_applications" />
-    </div>
-</el-main>
+    <el-main>
+        <div 
+            id="tabs-container"
+            class="app-container">
+            <applications-table
+                @open-application="openApplication"
+                @open-evaluations="openEvaluations"
+                @open-tasks="openTasks"
+                :titles="announcement.columns"
+                :filters="announcement.filters"
+                :types="announcement.types"
+                :tabs="tabs.items"
+                :announcement_uuid="prop"
+                :update="update_applications">
+            </applications-table>
+        </div>
+    </el-main>
 </template>
 <script>
 import ApplicationsTable from '@/views/review/components/ApplicationsTable'
@@ -141,15 +142,6 @@ export default {
             }
         },
 
-        removeTab(targetName) {
-            const tabs = this.tabs.items;
-            const activeName = this.tabs.active;
-
-            if (activeName === targetName) 
-                this.tabs.active = 'applications';
-            
-            this.tabs.items = tabs.filter(tab => tab.name !== targetName);
-        }
 
     },
 

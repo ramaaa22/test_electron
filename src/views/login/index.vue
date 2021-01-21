@@ -3,7 +3,7 @@
     <el-col class="is-flex is-flex-center container-login">
     <layout id="form-box">
         <h2 
-            class="text-center my-3">INGRESO</h2>
+            class="text-center my-3">Iniciar Sesión</h2>
         <el-form
             :model="form"
             ref="form"
@@ -35,7 +35,7 @@
                     :loading="loading"
                     type="primary"
                     native-type="submit"
-                    class="full-width">INGRESAR</el-button>
+                    class="full-width">Ingresar</el-button>
             </el-form-item>
         </el-form>
     </layout>

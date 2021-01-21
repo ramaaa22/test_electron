@@ -1,6 +1,5 @@
 <template>
 <div>
-
     <el-collapse 
         class="component-application"
         @change="$setHeights"
@@ -45,7 +44,8 @@
                             </el-alert>
                             <pdf-viewer
                                 v-if="file.mime.indexOf('pdf') > -1"
-                                :src="file.url"></pdf-viewer>
+                                :src="file.url">
+                            </pdf-viewer>
                             <audio 
                                 v-if="file.mime.indexOf('audio') > -1"
                                 controls>
@@ -81,7 +81,8 @@
                     <div
                         v-else 
                         class="application-value"
-                        v-html="renderValue(field)"></div>
+                        v-html="renderValue(field)">
+                    </div>
                 </div>
             </div>
         </el-collapse-item>

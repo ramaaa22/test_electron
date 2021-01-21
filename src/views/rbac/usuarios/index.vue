@@ -4,6 +4,7 @@
             id="tabs-container"
             class="app-container">
                 <total-users-table
+                    v-if="users"
                     :users="users"
                     @actualize-users="retrieveUsers"
                     @open-user="userOpenPermissions"
@@ -71,12 +72,7 @@
                     tab.title = row_title;
                 }
             },
-            removeTab(target_name) {
-                const tabs = this.tabs.items;
-                const active_name = this.tabs.active;
-                if (active_name === target_name) this.tabs.active = "users";
-                this.tabs.items = tabs.filter((tab) => tab.name !== target_name);
-            },
+            
         },
 
         components: {

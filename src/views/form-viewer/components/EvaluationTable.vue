@@ -5,65 +5,65 @@
         fit
         size="mini"
         :data="evaluation">
-            <el-table-column
-                align="center"
-                width="75"
-                label="Evaluado">
-                <template slot-scope="{ row: evaluation}">
-                    <i 
-                        class="las"
-                        :class="{
-                        'la-check-circle color-success' : evaluation.evaluated,
-                        'la-times-circle' : !evaluation.evaluated
-                    }">
-                    </i>
-                </template>
-            </el-table-column>
+        <el-table-column
+            align="center"
+            width="75"
+            label="Evaluado">
+            <template slot-scope="{ row: evaluation}">
+                <i 
+                    class="las"
+                    :class="{
+                    'la-check-circle color-success' : evaluation.evaluated,
+                    'la-times-circle' : !evaluation.evaluated
+                }">
+                </i>
+            </template>
+        </el-table-column>
 
-            <el-table-column 
-                align="center"
-                label="Nombre">
-                <template slot-scope="{ row: evaluation}">
-                    <span> {{evaluation.jury.firstname}} </span>
-                </template>
-            </el-table-column>
+        <el-table-column 
+            align="center"
+            label="Nombre">
+            <template slot-scope="{ row: evaluation}">
+                <span> {{evaluation.jury.firstname}} </span>
+            </template>
+        </el-table-column>
 
-            <el-table-column 
-                align="center"
-                label="Apellido">
-                <template slot-scope="{ row: evaluation}">
-                    <span> {{evaluation.jury.lastname}} </span>
-                </template>
-            </el-table-column>
+        <el-table-column 
+            align="center"
+            label="Apellido">
+            <template slot-scope="{ row: evaluation}">
+                <span> {{evaluation.jury.lastname}} </span>
+            </template>
+        </el-table-column>
 
-            <el-table-column 
-                align="center"
-                label="Documento">
-                <template slot-scope="{ row: evaluation}">
-                    <span> {{evaluation.jury.idnumber}} </span>
-                </template>
-            </el-table-column>
+        <el-table-column 
+            align="center"
+            label="Documento">
+            <template slot-scope="{ row: evaluation}">
+                <span> {{evaluation.jury.idnumber}} </span>
+            </template>
+        </el-table-column>
 
-            <el-table-column 
-                align="center"
-                label="Email">
-                <template slot-scope="{ row: evaluation}">
-                    <span> {{evaluation.jury.email}} </span>
-                </template>
-            </el-table-column>
+        <el-table-column 
+            align="center"
+            label="Email">
+            <template slot-scope="{ row: evaluation}">
+                <span> {{evaluation.jury.email}} </span>
+            </template>
+        </el-table-column>
 
-            <el-table-column
-                align="center"
-                width="150">
-                <template  slot-scope="{ row: evaluation}">
-                    <el-button
-                        size="mini"
-                        type="danger"
-                        @click="handleDelete(evaluation)">
-                        Eliminar
-                    </el-button>
-                </template>
-            </el-table-column>
+        <el-table-column
+            align="center"
+            width="150">
+            <template  slot-scope="{ row: evaluation}">
+                <el-button
+                    size="mini"
+                    type="danger"
+                    @click="handleDelete(evaluation)">
+                    Eliminar
+                </el-button>
+            </template>
+        </el-table-column>
     </el-table>
 </template>
 

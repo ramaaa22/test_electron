@@ -62,13 +62,12 @@ export default {
     },
     methods: {
         openAnnouncement(announcement) {
-             const props = {
+            const props = {
                 title: announcement.title,
                 name: announcement.title,
                 component: 'reviewsingle',
                 prop: announcement.uuid,
             }
-
             this.$emit('open-tab', props);
            
         },

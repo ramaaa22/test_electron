@@ -24,6 +24,7 @@
                 @click.native="$forceUpdate()">
             </el-checkbox>
 
+
             <el-row 
                 v-if="!field.rules.email"
                 type="flex"
